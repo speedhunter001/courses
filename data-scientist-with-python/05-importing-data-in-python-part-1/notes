@@ -1,0 +1,40 @@
+We can use numpy for numerics selection
+
+loadtxt(filename, delimiter=',')  (skiprows allows you to specify how many rows (not indices) you wish to skip; usecols takes a list of the indices of the columns you wish to keep.)
+
+np.genfromtext()   (If one column is string and another is some other datatype so instead of loadtxt we use genfromtext)
+
+There is also another function np.recfromcsv() that behaves similarly to np.genfromtxt(), except that its default dtype is None
+
+sep (the pandas version of delim) 
+
+Pickle:
+
+The pickle module implements binary protocols for serializing and de-serializing a Python object structure. “Pickling” is the process whereby a Python object hierarchy is converted into a byte stream, and “unpickling” is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy. Pickling (and unpickling) is alternatively known as “serialization”, “marshalling,” or “flattening”; however, to avoid confusion, the terms used here are “pickling” and “unpickling”.
+
+In python excel sheets can be imported as:
+xls =  pd.ExcelFile(..xlsx)
+print(xls.sheet_names)
+
+Sas files have extension of sas7bdat or sas7bcat 
+from sas7bdat import SAS7BDAR
+with SAS7BDAT(..) as file:
+	d = file.to_data_frame()
+
+Stata files can be imported as
+import pandas as pd
+s = pd.read_stata(..)
+
+hdf5 files can be imported as:
+imported h5py
+
+h = h5py.File('..', 'r')   (In read mode,usually three main keys or groups meta,quality,strain or may be different)  
+
+Matlab files can be imported as:
+import scipy.io
+
+m = scipy.io.loadmat(..)  (This for reading a mat file)
+
+Importing from sqlite database:
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///Chinook.sqlite')   (Another library can be used too but this library also supports mysql etc)

@@ -1,0 +1,87 @@
+MONGODB:
+
+Mongo is whats called no SQL database,to be more specific its called a document database,data or records are stored as documents and they use json like syntax so no sql databases are much different than relational databases,with a relational database you have to map ouut everything,you nneed to figure out the exact schema including what tables you use,what fields you use even what types fields you use,with no SQL there is nothing like that,you should plan out the structure of your database and your collections but you don't have to do any predefined structuring
+
+One of the greatest advantages to MongoDB and no SQL databases in general is scaling,they are really easy to scale compared to SQL or relational databases,they are much faster in most operations
+
+Go to   www.mongodb.com   and click on download button
+
+When installed then create two folders one called data and one called log and inside create another folder called db where all data will be stored on the filesystem
+
+mongod --directoryperdb --dbpath C:\mongodb\data\db --logpath C:\mongodb\log\mongo.log --logappend --rest --install     (Due to this command now our data will be stored in db and log in log folder,this command may or may not work for linux) 	
+
+net start MongoDB  		(This starts it in windows)
+
+mongo 			(Due to this we go in shell)
+
+show dbs 		(This shows the local database which we do not want to use)
+
+use mycustomers		(Due to this command it will switch to folder for database we want to use)
+
+db 			(This will show us which we are using)
+
+db.createUser({
+	user."brand",
+	pwd:"1234",
+	roles:["readwrite", "dbadmin"]
+});		(This is the simple way to create user)
+
+Collections are very similar to tables,they are just to hold documents or records 
+
+db.createCollection('customers');		(This creates a collection of customers)
+
+show collections 		(This shows us collections)
+
+db.customers.insert({first_name:"John", last_name:"Doe"});		(This insets a document inside a collection)
+
+db.customers.find();		(This shows us the document and the id is automatically created unlike relational database)
+
+db.customers.insert([{first_name:"ullu", last_name:"pullu"},{first_name:"James", last_name:"bond", gender:"male"}]);		(We can pass an array for more than one,and unlike relational database you can have whatever field you want on whatever document you want)
+
+db.customers.find().pretty();		(This makes the look pretty bearable to look)
+
+db.customers.update({first_name:"John"},{first_name:"John", last_name:"Doe", gender:"male"});		(first parameter which document is to be updated and second parameter what is to be updated,it replaces the entire thing after matching,first_name is also dangerous to use because many people have same first names)
+
+db.customers.update({first_name:"Steven"},{$set:{gender:"male"}});		(In this way the whole thing is not replaced)
+
+db.customers.update({first_name:"Steven"},{$set:{age:50}});
+
+db.customers.update({first_name:"Steven"},{$inc:{age:5}});		(This increments the age by 5 in document)
+
+db.customers.update({first_name:"Steven"},{$unset:{age:1}});		(This deletes field of age)
+
+db.customers.update({first_name:"Mary"},{first_name:"Mary",last_name:"Sampsons"},{upsert:true});		(This inserts)
+
+db.customers.update({first_name:"Steven"},{$rename:{"gender":"sex"}});		(This replaces)
+
+db.customers.remove({first_name:"Steven"});		(This removes the document)
+
+db.customers.remove({first_name:"Steven"},{justOne:true});		(This will remove the first doucument it finds with the first_name of "Steven")
+
+db.customers.find({first_name:"Sharon"});		(This will find us the particular field)
+
+db.customers.remove({$or:[{first_name:"Sharon"},{first_name:"Troy"}]});		(This finds the two)
+
+db.customers.find({gender:"male"});		(This gives us back the documents which has gender of male)
+
+db.customers.find({age:{$lt:40}});		(This gives us back the doucument which has age less than 40,there is also gt,lte,gte)
+
+db.customers.find({"address.city":"Boston"});		(Inside address there is a dictionary and it also has city inside it so we use that way here)
+
+db.customers.find({memberships:"mem1"});		(Inside membersip is an array so it shows us all the documents that have mem1 in their array)
+
+db.customers.find().sort({last_name:1});		(This gives us the documents in ascending order using last_name)
+
+db.customers.find().sort({last_name:-1});		(This gives us the documents in descending order using last_name)
+
+db.customers.find().count();		(This counts all the documents)
+
+db.customers.find({gender:"male"}).count();		(This counts the documents whose gender is male)
+
+db.customers.find().limit(4);		(This finds only 4)
+
+db.customers.find().limit(4).sort({last_name:1});		(This finds the 4 documents and sorts them in ascending order using last_name)
+
+db.customers.find().forEach(function(doc){
+	print("Customer Name:" + doc.first_name)
+})		

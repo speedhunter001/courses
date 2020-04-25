@@ -1,0 +1,758 @@
+Node.js is a javascript runtime and server-side technology and it comes with NPM
+
+Express is a back-end framework which is used for building powerful applications
+
+MongoDB is no SQL Database
+
+Mongoose is an Object Relational Mapper and this allows our application to interface with MongoDB
+
+We will be using the pug template engine for our views
+
+Bower is a front-end package manager similar to NPM
+
+JQuery and Ajax can be used to make delete requests to the server
+
+
+Node.js is unlike Apache and PHP so we have to manually handle requests in response so Express allows us to that easily and with much less code
+
+Create the folder for yourself and then in terminal and in that directory write   npm init  which will create a package.json file
+
+Note:Commands may or may not run on linux machine
+
+https://expressjs.com/en/4x/api.html#app.METHOD    See the app.methods here
+
+npm install --save express 		(This command will install express and add it to the dependencies in json file because of save switch)
+
+In app.js file or index.js:
+
+const express = require('express');
+
+const app = express();
+
+app.get('/', function(req, res){
+	res.send('Hello worldssss');
+});
+
+app.listen(3000, function(){
+	console.log('server started on port 3000');
+});		(.get is the get request to slash to the home page you can check the doucumentation,send will basically send something to the browser,/ is root URL)
+
+Then in terminal run   npm start   and then in browser go to  localhost:300
+
+Pug is a template engine and formerly known as Jade,instead of using HTML tags it uses indentation so run the command  npm install --save pug
+
+const express = require('express');
+const path = require('path');
+
+const app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
+app.get('/', function(req, res){
+	res.render('index');
+});
+
+app.listen(3000, function(){
+	console.log('server started on port 3000');
+});		(In first app.set we are specifying where our views or templates will be kept and then we give the path of views folder,__dirname means the current directory and then we just need to set it in pugs)
+
+After all this make the folder  views  and in it make the file  index.pug  and in it write:
+
+doctype html
+html
+	head
+		title ullllluu
+	body
+		h1 art
+
+Then run npm start 	(In pug there are no tags or angle brackets like we use in html,if you want to use an element inside another element then you must care for indentation)
+
+We can also take a value
+
+..
+	res.render('index', {
+		title:'Hello'
+	});
+..
+
+and in pug file:
+
+doctype html
+html
+	head
+		title ullllluu
+	body
+		h1 #{title}		
+(Because we changedthe javascript so now we have to run the server again so what we do is  npm install -g nodemon  g stands for global so we can use it from any directory and then to start the server write  nodemon  and now if we just only reload the page it will update so we don't have to install the server)
+
+..
+app.get(..);
+
+app.get('/articles/add', function(req, res){
+	res.render('add_article', {title:"Add article"})
+});		(So we have created another route here so also create a file add_article.pug in views(write pug code in it) and then localhost:300/articles/add so now we will go to the articles page)
+
+Both the files have the same title etc stuff so we create another file called  layout.pug  and in it write:
+
+doctype html
+html
+	head
+		title ullllluu
+	body
+		..
+
+And then in the  index  and  add_article  files we wrie at the top:
+
+extends layout
+
+So now to edit title etc we only have to change the layout file
+
+
+app.get('/', function(req, res){
+	a = [{id:1,title:'sfdf'..},..,..];
+
+	res.render('index',{title:'Articles', articles:a});
+});		(Then we go to index.pug)
+
+
+ul
+	each article, index in articles
+		li = article.title
+(This is the each loop in pug and equal is sign to tell the li that aricle.title is a variable)
+
+In mango.exe which is a shell:
+
+use nodekb		(creates a database and switches to it)
+
+db.createCollection('articles');
+
+db.articles.insert({title:"Article one",author:"Ammar",body:"blah blah"});
+
+db.articles.find();
+
+We need to then install mongoose,you can check the documentation mongoosejs.com and then we have to require it and then connect to the database and then create our model which will have all the fields and stuff like that	
+
+npm install	--save mongoose   (We need to be in the directory)
+
+NoSQL Databases like MongoDB are flexible but it also gives us a downfall because your data isn't structured so Mongoose can help us to structure data on application level rather than being forced to do it on a data level like something like MySQL
+
+..
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/nodekb')   //nodekb is just the name
+let db = mongoose.connection;
+
+(After this create a neew folder called models and in it create a file called article.js)
+
+In article.js:
+
+let mongoose = required('mongoose');
+
+let articleSchema = mongoose.Schema({
+	title:{
+		type:String,
+		required:true
+	},
+	author:{
+		type:String,
+		required:true
+	},
+	body:{
+		type:String,
+		required:true
+	}
+});
+
+let Article = module.exports = mongoose.model('Article', articleShema);		(You can check the mongoose documentation on the website)
+
+In app.js:
+
+const ..
+..
+db.once('open',function(){
+	console.log('Connected to MongoDB');
+});
+
+db.on('error',function(err){
+	console.log(err);
+});
+..
+let Article = require('./models/article');
+
+..
+
+app.get('/', function(req, res){
+	Article.find({}, function(err, articles){
+		if (err){
+			console.log(err);
+		}
+		else{
+			res.render('index', {
+				title:'Articles',
+				articles:articles
+			});
+		}
+	});
+});
+..
+
+(And remove the Articles object literals you created in app.get bcs now no need)
+
+In views/add_article.pug:
+
+extends layout
+
+block content
+	h1 #{title}
+	form(method='POST', action='/articles/add')
+		#form-group
+			label Title:
+			input.form-control(name='title',type='text')
+		#form-group
+			label Author:
+			input.form-conrol(name='author', type='text')
+		#form-group
+			label Body:
+			textarea.form-control(name='body')
+		input.btn.btn-primary(type='sumit', value='Submit')
+
+(# is for id and .form-control is class,now run command  npm install --save body-parser )
+..
+const bodyParser = require('body-parser');
+
+..
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+..
+
+app.post('/articles/add', function(req, res){
+	let article = new Article();
+	article.title = req.body.title;
+	article.author =  req.body.author;
+	article.body = req.body.body;
+
+	article.save(function(err){
+		if(err){
+			console.log(err);
+			return;
+		}
+		else{
+			res.redirect('/');
+		}
+	});
+});
+		(req.body is body parser so write the code for it too,res.redirect is written because we want to then redirect to the home page,I think the save function saves the new article in database)
+
+
+..
+app.use(express.static(path.join(__dirname, 'public')));
+..		(Before this create a foder called public and then through this we will set the folder to be static)
+
+npm install -g bower
+
+We use bower to install bootstrap but when we install bootstrap it installs components too so we want them to be in public folder so we create a file called .bowerrc and in it write:
+
+{
+	"directory":"public/bower_components"
+}
+
+bower install bootstrap
+
+In layout.pug:
+
+doctype html
+html
+	head
+		title Knowledgebase
+		link(rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css')
+	body
+		.container
+			block content
+			br
+			hr
+			footer
+				p Copyright &copy; 2017
+
+In index.pug:
+
+extends layout
+
+block content
+	h1 #{title}
+	ul.list_group
+		each article, i in articles
+			li.list-group-item = article.title 		(Here we have added the classes)
+
+Now add to layout the navbar code from website and convert it in pug code through internet and change the redirecting stuff,when you lessen the size of the browser the button appears in navbar for menu but it doesn't workks so to make it work:
+
+script(src='/bower_components/jquery/dist/jquery/js')
+script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+
+In index.pug:
+
+extends layout
+
+block content
+	h1 #{title}
+	ul.list_group
+		each article, i in articles
+			li.list-group-item 
+				a(href="/article/"+article._id) = article.title 		(Now we create a get method)
+
+In app.js
+
+..
+app.get('/article/:id', function(req, res){
+	Article.findById(req.params.id, function(err, article){
+		res.render('article',{article:article})
+	})
+})		(: means its gonna be a placeholder that is can be anyhting,after this create another file in views called article.pug)
+
+In article.pg:
+
+extends layout
+
+block content
+	h1 = article.title
+	h5 Written by #{article.author}
+	p=article.body
+	hr
+
+	a.btn.btn-default(href='/article/edit'+aritcle._id) Edit
+
+In app.js:
+..
+app.get('/article/edit/:id', function(req, res){
+	Article.findById(req.params.id, function(err, article){
+		res.render('edit_article',{
+		title:'Edit Article',
+		article:article})
+	})
+})		(After this create another file called edit_article.pug)
+
+In edit_article.pug:
+
+extends layout
+
+block content
+	h1 #{title}
+	form(method='POST', action='/articles/edit/'+article._id)
+		#form-group
+			label Title:
+			input.form-control(name='title',type='text', value=article.title)
+		#form-group
+			label Author:
+			input.form-conrol(name='author', type='text', value=article.author)
+		#form-group
+			label Body:
+			textarea.form-control(name='body')=article.body
+		input.btn.btn-primary(type='sumit', value='Submit')
+
+(Now we need to work in submit)
+
+app.post('/articles/edit/:id', function(req, res){
+	let article = {};
+	article.title = req.body.title;
+	article.author = req.body.author;
+	article.body = req.body.body;
+
+	let query = {_id:req.params.id}
+
+	Article.update(query, article, function(err){
+		if(err){
+			console.log(err);
+			return;
+		}
+		else{
+			res.redirect('/');
+		}
+	});
+});
+
+Now deleting:
+
+In article.pug:
+
+..
+a.btn.btn-danger.delete-article(href='#',data-id=article._id)Delete
+		(Now create two a folder in public called js and inside it main.js and inside the css folder create style.css)
+
+In layout
+..
+link(rel='stylesheet' href='/css/style.css')
+..
+..
+script(src='/js/main.js')
+
+In main.js:
+
+$(document).ready(function(){
+	$('.delete-article').on('click', function(e){
+		$target = $(e.target);
+		const if = $target.attr('data-id');
+		$.ajax({
+			type:'DELETE',
+			url:'/article/'+id,
+			success:function(response){
+				alert('Deleting Article');
+				window.location.href='/'; //redirecting
+			},
+			error:function(err){
+				console.log(err);
+			}
+		});
+	});
+});
+
+In app.js:
+
+..
+app.delete('/article/:id', function(req, res){
+	let query = {_id:req.params.id}
+
+	Article.remove(query, function(err){
+		if(err){
+			console.log(err);
+		}
+		res.send('Success');
+	})
+});
+
+npm install --save express-messages express-session connect-flash express-validator
+
+In app.js:
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
+..
+//Express Session Middleware
+app.use(session({
+	secret:'keyboard cat',
+	resave:true,
+	saveUnitialized:true
+}));
+
+//Express Messages Middleware
+app.use(require('connect-flash')());
+app.use(function(req, res, next){
+	res.locals.messages = require('express-messages')(req, res);
+	next();
+})
+
+//Express Validator Middleware
+...	
+
+(All this code is taken from internet)
+
+Create a file called message.pug and in it write:
+
+.messages
+	each type in Object.keys(messages)
+		each message in messages[type]
+			div(class='alert alert-'+type) #{messages}
+
+In layout.pug:
+..
+!=messages('message', locals)
+..
+
+In app.js:
+
+app.post(
+	req.flash('success', 'Article added')
+)
+
+Also:
+
+Article.update(
+..
+	req.flash('success', 'Article updated')
+)
+
+Also
+
+//Add submit post route
+app.post(
+	req.checkBody('title', 'Title is required').notEmpty();
+	//same for author
+	//same for body
+
+	let errors = req.validationErrors();
+
+	if(errors){
+		res.render('add_article',{
+			title:'Add Article',
+			errors:errors
+		})
+	}
+	else{
+	...
+	}
+)
+
+In layout.pug:
+..
+!=messages('message',locals)
+if errors
+	each error,i in errors
+		div(class="alert alert-danger") #error.msg
+
+We create another folder named routes and in it articles.js and in it:
+const express = require('express');
+const router = express.Router();	
+
+let Article = require('./models/article');
+..
+router.get(..)
+router.get(..)
+..
+	(All the routes are now in this file)
+
+In app.js:
+let articles = reequire('./routes/articles');
+app.use('/articles', articles)
+
+(For now ger rid of all the /article in the article.js also write at the end module.exports = router; so we can access the file from outside)
+
+PASSPORT:
+
+Passport is an authentication middleware for node.js.It is flexible and can be used in any express based web application.A comprehensive set of strategies support authentication using a username and password
+
+Bcrypt is used to has passwords and we are going to use bcrypt js
+
+npm install --save passport passport-local bcryptjs		(We will use local strategy of passport)
+
+Create a new file  user.js  in models and write in it:
+
+const mongoose = require('mongoose');
+
+const UserSchema = mongoose.Schema({
+	name:{
+		type:String,
+		required:true
+	},
+	email:{
+		type:String,
+		required:true
+	},
+	password:{
+		type:String,
+		required:true
+	}
+});
+
+const User = module.exports = mongoose.model('User',UserSchema);
+
+In routes create a file called  users.js  and in it write:
+
+const express = require('express');
+const router = express.Router();
+
+let User = require('../models/user');
+
+router.get('/register', function(req, res){
+	res.render('register');
+});
+
+module.exports = router;
+
+In app.js:
+..
+let users = require('./routes/users');
+app.use('/articles', articles);
+app.use('/users', articles);
+
+In views we create another file called  register.pug  and in it write:
+
+extends layout
+
+block content
+	h1 Register
+	form(method='POST', action='/users/register')
+		#form-group
+			label Name:
+			input.form-control(name='name', type='text')
+		#form-group
+			label Email:
+			input.form-control(name='email', type='text')
+			..
+			..
+			..
+		br
+		input.btn.btn-primary(type='submit', value='Submit')
+
+In users.js:
+..
+let bcrypt = require('bcrypt.js');
+..
+..
+router.post('/register', function(req, res){
+	const name = req.body.name;
+	const email = req.body.email;
+	const username = req.body.username;
+	const password = ..
+	..
+
+	req.checkBody('name', 'Name is required').notEmpty();
+	..
+	req.checkBody('email', 'Name is required').isEmail();
+	..
+	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+
+	let errors = req.validationErrors();
+
+	if(errors){
+		res.render('register',{
+			errors:errors
+		});
+	}
+	else{
+		let newUser = new User({
+			name:name,
+			..
+			..
+		});
+	}
+	bcrypt.genSalt(10, function(err, salt){
+		bcrypt.has(newUser.password, salt, function(err, hash){
+			if(error){
+				console.log(err);
+			}
+			newUser.password = hash;
+			newUser.save(function(err){
+				if(err){
+					console.log(error);
+					return;
+				}
+				else{
+					req.flash('success', 'You are nowregis..')
+					res.redirect('/users/login');
+				}
+			});
+		})
+	})
+
+});
+
+router.get('/login', function(req, res){
+	res.render('login');
+})
+
+Then create a file called  login.pug  in views and you can copy from register.pug and change according to login
+
+Also create in navbar the nav links
+
+Crete a folder of config and in it two files  database.js  and  passport.js  and in database.js write:
+
+module.exports = {
+	database:'mongodb://localhost:27017/nodekb',
+	secret:'yoursecret'
+}
+
+In app.js:
+..
+const config = require('./config/database');
+
+mongoose.connect(config.databse);	
+
+In passport.js:
+
+const LocalStrategy = require('passport-local');
+const User = require('../models/user');
+const config = require('../config/database');
+const bcrypt = require('bcryptjs');
+
+module.exports = function(passport){
+	
+	passport.use(new LocalStrategy(function(username, password, done){
+		let query = {username:username};
+		User.findOne(query, function(err, user){
+			if(err) throw err;
+			if(!user){
+				return done(null, false, {message:No user found});
+			}
+
+			bcrypt.compare(password, user.password,function(err, isMatch){
+				if(err) throw err;
+				if(isMatch){
+					return done(null, user);
+				}
+				else{
+					return done(null, false, {message:'Wrong password'});
+				}
+			})
+		});
+	}));
+};		(You can check the documentation of passport and after this we also add serialization and deserialization from website)
+
+In app.js:
+const passport = require('passport');
+..
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
+In users.js:
+..
+const passport = require('passport');
+..
+router.post('/login', function(req, res, next){
+	passport.authenticate('local',{
+		successRedirect:'/',
+		failureRedirect:'/users/login',
+		failureFlash:true
+	})(req,res,next);
+})	(After this in style.css define the colors for the classes of these messages)
+
+In app.js:
+..
+app.get('*', function(req,res, next){
+	res.locals.user = req.user || null;
+	next(); //To call the next middleware //and * for all routes 
+});
+
+In layout.pug create another li in navvbar for logout
+
+In users.js:
+..
+router.get('/logout', function(req, res){
+	req.logout();
+	req.flash('success', 'You are logged out');  
+});
+
+In add_article.pug remove the body for author
+
+In article.js:
+//Commenting out the req.Check.. in post request and instead of req.body.author write req.user._id and then:
+..
+let User = require('../models/user');
+..
+router/get('/:id', function(req, res){
+	Article.findById(req.params.id, function(err, article){
+		User.findById(article.author, function(err, user){
+			res.render('article', {
+				article:article,
+				author:user.name
+			})
+		})
+	})
+})
+
+In layout.pug for article add condition then in article.js:
+ ..
+ functionn ensure_authenticated(req, res, next){
+ 	if(req.isAuthenticated()){
+ 		return next();
+ 	}
+ 	else{
+ 		req.flash('danger','Please login');
+ 		res.redirect('/users/login');
+ 	}
+ }		(Now give this function of the Add article route and in the edit article form)
+
+ In layout.pug create a condition and then in it write the code for edit and delete button
+
+ In aricle.js we change the code in delete router
+
+ TO LEARN DEPLOY CHECK THE LAST VIDEO OF THIS STUPID SERIES

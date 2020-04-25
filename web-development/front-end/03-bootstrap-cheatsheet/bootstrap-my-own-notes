@@ -1,0 +1,241 @@
+BOOTSTRAP:
+Bootstrap is front-end framework meaning its used on the client not on the server.
+Specifically used for user interfaces and themes.
+It includes bits of HTML/CSS/Javascript.
+Used for building responsive,mobile first(designing for small screens first and then working up to the larger screens,so great for mobile apps and and mobile websites) wer applications and websites.
+Most popular framework by far.
+Increases development speed:   All helper classes for alignment and style and positioning they are all done,All you need to worry about is adding those classes to you HTML
+Responsiveness:    Instead of using custom media queries and creating a responsive site frim scratch you can simply use the grid system and you will have a mobile friendly website
+Consistency:  With class names,style markup keeps your website and your theme very consistent
+Customizable:    You can add you own classes and your own design to any bootstrap theme
+Support:    Has a huge community
+We also have many javascript widgets and helpers like Transitions,Modals,Dropdowns,Tabs etc.
+
+INSTALL METHODS:
+1.Download the files including sass and less but we will take the distributed code of html and javascript and include it in our template	
+2.You can use CDN(Content Delivery Network)by a script tag or link in CSS but its hosted somewhere else so you can't do it offline,you need internet
+3.You can also us Bower,its a client side package manager
+4.NPM is also a package manager on the back end side that has to do with nodejs using javascript and server
+Other ways too
+You also need to include Jquery,it uses jquery for all javascript widgets
+
+You can see tutorials or documentation and downloads in getbootsrtap.com
+
+<link href="css/bootstrap.min.css" rel="stylesheet">  (For now only this file)
+
+<div class="container">
+	<h1>hello lolo</h1>
+</div>    (container is very importan class it does some stuff for us)
+
+for heading there is a class called page-header
+
+If you want a paragraph that kinds of sticks our you will need lead class
+
+<mark>Hooo</mark>    (This higlights)
+
+<del>ooo</del>       (this text is now crossed out i.e a line over the text)
+
+ALIGNMENT AND TRANSFORMATION:
+text-left
+text-center
+text-right
+text-justify
+text-nowrap
+These are all the classes
+
+text-lowercase
+text-uppercase
+text-capitalize   (This capitalizes the first letter of each word)
+
+QUICK FLOATS:
+pull-right
+pull-left
+
+These are also classes
+but after we float something we use clear so class for that is clear-fix
+
+BLOCKQUOTE
+<bockquote classe="blockquote">
+	....
+	<footer>quote by<cite title="john">john</john>
+</blockquote>
+(this method is for blockquotes but if we want the name of footer to appear on right so we use classe blockquote-reverse)
+
+LIST
+<ul class="list-unstyled">
+	<li>one</li>
+	<li>two</li>
+</ul>    (This gives the list without the black dots)
+
+<ul class="list-inline">
+	<li>one</li>
+	<li>two</li>
+</ul>     (the list items appear on one line without black dots)
+
+CODE:
+<code>&lt;h1&gt;Heading text&lt;/h1&gt;</code>
+(In this way Headig text will appear with h1 tags)
+
+Change directory with<kbd>cd</kbd>    (kbd stands for keyboard tag,it highlights the cd in a particular way)
+
+to edit press <kbd><kbd>ctrl</kbd>+<kbd>,</kbd></kbd>
+
+CONTEXTUAL COLORS:
+text-primary    (blue)
+text-success    (faintly green)
+text-info       (light blue)
+text-warning    (yellow)
+text-danger     (red)
+text-muted      (light grey)
+
+bg-primary   
+bg-success    
+bg-info       
+bg-warning    
+bg-danger     
+bg-muted      
+
+CONTEXTUAL BUTTONS:
+For buttons,link(a tag),input we can use class btn-default
+
+btn-default
+btn-primary		(blue)
+btn-success		(green)
+btn-info		(light blue)
+btn-warning		(yellow)
+btn-danger		(red)
+btn-link        (now its a link with no border)
+
+disabled="disabled"   (now you cannot click button)
+
+BUTTON SIZES:
+btn-lg		(large button)
+btn-sm		(small button)
+btn-xs		(extra small)
+btn-default	(normal size)
+
+FORM:
+form-group  (use this class for each field)
+form-control (use this class for each input)
+
+We can also have help-block class 
+
+By using type="file" in an input tag it allows us to select a file
+
+There is also a class for checkbox named checkbox
+
+form-inline class can be used if we want all the fields to be on one line,but it works upto a certain size of browser
+
+TABLE:
+table  (this class makes the class look nice and clean)
+table-striped  (gives a good effect)
+table-hover    (it changes when you hover it)
+table-bordered  (applies changes to borders)
+table-condensed  (makes the table a bit smaller)
+
+succes   (makes the thing green)
+other colours lke before
+
+All of these are classes
+
+
+
+If we add list-group class to ul tag then it doesn't shows any effectt so we also need to add a list-group-item to each li tag it gives a good effect
+
+class="active"  (makes it active)
+
+list-group-item-success   (makes it green)
+
+PANELS:
+A panel in bootstrap is a bordered box with some padding around its content.
+
+panel
+panel-default
+panel-primary   (Other colours can also be used in this way)
+panel-heading   (class for heading of panel)
+panel-footer    (class for footer of panel)
+panel-title     
+
+WELLS:
+The well class adds a rounded border around an element with a gray background color and some padding
+
+well    	(This class is for well)
+well-lg  	(This class makes the well large)
+well-sm     (This class makes the well small)
+
+ALERTS:
+alert 		(This class is for alert)
+alert-success	(This will now be a green alert)
+alert-info		(This will now be a light blue alert)
+alert-warning	(This will now be a yellow alert)
+alert-danger	(This will now be a red alert)
+role=alert
+
+&times;      (its for close mark)      
+
+
+PROGRESS BARS:
+progress     (class for progress)
+progress-bar   (class for progress bars)
+progress-bar-success   (green color,info etc colors are too)
+style="width:50%;"		(It shows that how much progress bar has progressed)
+progress-bar-striped	(It shows stripes on progress bar)
+active               (This class animated the bar)
+
+LABELS:
+label 		(This class is for label)
+label-default		(For white color)
+label-info			(Other colors are available too)
+
+The <span> tag is used to group inline-elements in a document.
+
+The <span> tag provides no visual change by itself.
+
+The <span> tag provides a way to add a hook to a part of a text or a part of a document.
+
+If you define a label inside h1 etc its size will be bigger
+
+BADGE:
+badge   (In video this class is written inside span tag so after span tag write the number)
+
+IMAGES:
+thumbnail		
+img-rounded
+img-circle	
+
+All these classes are inside img tag
+
+GRID:
+There are 12 columns
+<div class="row">
+	<div class="col-md-8">
+		heelll ooo odjdjl kdpopksa adkjdas
+	</div>
+	<div class="col-md-4">
+		heelll
+	</div>
+</div>
+
+
+col-md-8    (It means 8 columns of medium size and similarly others)
+
+If you change the browser size and you don't want the text to change their columns then you can write col-sm-n col-xs-n , n is the number of columns in the same tag
+
+NAVBAR:
+https://getbootstrap.com/docs/4.1/components/navbar/  
+
+You can learn navbar from here
+
+JUMBOTRON:
+A lightweight, flexible component that can optionally extend the entire viewport to showcase key marketing messages on your site.
+
+jumbotron     (class for jumbotron)
+
+https://getbootstrap.com/docs/4.1/components/jumbotron/
+
+
+
+You can find all the components documentation in this link
+
+https://getbootstrap.com/docs/4.1/components/
+

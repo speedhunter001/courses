@@ -1,0 +1,268 @@
+~(tilda stands for home directory)
+
+up arrow key cycles through th commands
+
+LINUX COMMANDS:
+date 
+
+cal         									(calendar)
+
+wget        									(webget)
+
+unzip        
+
+clear        									(clears the terminal garbage)
+
+mkdir filename         							(makes a new file)
+
+cd ..       									(goes back to previous directory)
+
+cd -         									( goes back to previoous directory you were in but if used more than two comes back again(my own observation) )
+
+mkdir -p d1/d2/d3     							(makes d1 and in it d2 and in d2 it makesd3,-p means make it one by one otherwise it will give error)
+
+cd d1/d2/d3     								(goes in d1 then d2 then d3)
+
+cd ../../../    								(goes to d2 then d1 then in wich you were)
+
+ls -R d1        								(shows you what is in d1 then what is nin d2 and then what is n d3 which is an empty file)
+
+pwd           									(pwd shows Present Working Directory)
+
+touch hello.txt      							(touch makes a file which does not exist)
+
+whatis command        							(this commands tell us about any command you type)
+
+wc dummy-file.txt       						(it counts the words)
+
+man command            							(it tells you everything about it)
+
+ls lesson-02            						(ls can also work in this way which is specified not he current directory)   
+
+lesson-02/*.csv        							(it tells me all the files that are in lesson-02 of csv extension)
+
+history              							(it tells you all the comands you used)
+
+!40                 							(it executes the 40th command you used in history)
+
+Ctrl+R  command        							(it tells you where did you use this command)
+
+UP Arrow ; history ; Ctrl + R      				(three ways for searching the required command)
+
+head iris.csv          							(it will output 10 lines but I think that it tells us about the header as there is no header in this file)
+
+cat iris.csv | wc       						( | is a pipe command which takes the first command as in input to the second command)
+
+grep "setosa" iris.csv     						(grep takes a string and searches it in the file and it outputs the lines)
+
+cat iris.csv | grep "setosa" | wc       		(it takes the lines of setosa after cat and then counts using wc Note :no file here for grep and wc because of the input thingy)
+
+cat iris.csv | grep "setosa"| grep "3.5"         (it searches for file having setosa and 3.5)
+
+cd ../lesson-03            							(we are i lesson-02 so we go back then go to lesson-03)
+
+echo "something"           							(echo just ouputs any thing you wrote on the console)
+
+echo "something" > temp      					( > redirects something to the temp file)
+
+cat iris.csv | grep "setosa" > sectota.csv      (after filtering sectosa lines they are redirected into the sectota.csv which does not exist but it is made now)
+
+mv sectota.csv setosa.csv      					(mv renames the file from sectota.csv to sectosa.csv)
+
+cp iris.csv iris-backup.csv    					(copies contents of iris.csv in iris-backup.csv Note: cp works with files not directories)
+
+mv iris-backup.csv backup/iris.csv      		(now there will be this file in backup directory)
+
+rm setosa.csv           						(removes the setosa.csv it cannot delete a directory containing things)
+
+cp -r backup backup-2       					(cp -r is used for copying directories)
+
+rm backup/iris.csv        						(removes iris.csv in backup)
+
+rmdir backup    								(rmdir only removes empty directories)
+
+rm -r backup                         			(removes the whole directory containig all things)
+
+df                                              ( df outputs the usage of drives in your folder)
+
+df -h                                           (-h stands for human readables)
+
+du 												( it tells you the size of all directories)
+ 
+du -h 											(-h stands only for human readable)
+
+du -sh 											(it only tells us the size of current directory)
+
+du -sh*											( it tells you the size of the directories only   in the current workspace )
+
+cd l(tab) cd lesson-0(tab)(tab) 				(it shows the list then type the one you want)
+
+Ctrl+L                                           (it clears the console)
+
+Ctrl+U 											 (it clears everything before the cursor)
+
+Ctrl+Y 											 (it brings back the command you just cleared though Ctrl+U)
+
+Ctrl+A 											 (it goes to the first letter of the typed command )
+
+Ctrl+E 											 (it goes to last letter of the typed command)
+
+Ctrl+K  										 (it clearrs everything after the cursor)
+
+find . -name "*.csv"                             ( . stands for current directory this command finds all names of files with csv )
+
+find . -type f -size +100k                        (f is for file this command gives the files of size greater than 100)
+
+find /home/muhammadammarabid -type f -size +100M   (finds all the files of size greater than 100 megabyte)
+
+ls -l lesson-04/housing-data						(inbetween the output size is given,time etc)
+
+ls -lh lesson-04/housing-data						(gives the data in humman readable format etc)
+
+tail lesson-04/housing-data/au5_500.csv		(tail outpus the last ten lines like head outputs the first 10 lines)
+
+tail hello.txt 								( terminal 1 : does not return the prompt as file is empty,it is used for debugging no need for logging)
+
+echo "something" > hello.txt 				( terminal 2 :it will overwrite any previous data in hello.txt and the terminal 1 will show something but still no prompt because 10 lines are supposed to be there)
+
+echo "hhh" > hello.txt						(overwrites something)
+
+echo "jsfj" >> hello.txt 					( >> appends not overwrites)
+
+top 										(this command is used for task manager just like in windows)
+
+ps u 										(process listing and u is for user it gives the non real time same info of top)
+
+ps au 										(au is for all users)
+
+ps aux   									(x stands for different syntax)		
+
+ps aux | grep firfox 						(it shows the line of firefox)
+
+kill -9 1342   								(kill itself is a signal and -9 is to kill immediately,we get 1342 from ps aux|grep firefox in the start w)  
+
+killall firefox    							 (send the terminate signal to all the process that are named firefox)
+
+tail -f hello.txt 							 (termial 1:it keeps following the file,Note: it does not return the prommpt while if I had done the tail hello.txt it would end after one line )
+	
+ps aux | grep tail
+kill -9 11922               				 (terminal 2 is used for these commands,terminal 1 : killed)
+
+cat /proc/cpuinfo 							 (this command shows you info about your cpu /proc is a virtual directory that holds info about processes)
+
+cat /proc/meminfo 							 (this command shows you info about your memory)
+	
+cat /proc/2860/status  						 			(this command tells you info about firefox 2860 is the number of firefox whic is founded by ps aux | grep firefox command)
+
+cat /proc/2860/status | grep vountary        			 (finds the number of voluntary_ctxt_switches,voluntary is the number of times the process has yielded to the operaing system voluntarily)
+
+watch 'cat /proc/2860/status | grep vountary'  					(the number changes if we execute the above command again and again so what watch does is it executes the command itself after every two seconds) 
+
+watch -n 1 'cat /proc/2860/status | grep vountary' 				(it executes every one second)
+
+ls -l | wc 													(ls -l shows the files and wc counts the lines)
+
+watch n -1 'ls -l | wc '											(this command is helpful for seeing the files downloaded)
+
+ifconfig 													(this command is the counterpart of windows ip config this command is used for so many purposes,if stands for interfaces)
+
+nslookup yahoo.com 											(if you do nslookup you can be sure that at least DNS server is working correctly)
+
+ping yahoo.com 												(it continues to check ping to exit type Ctrl+C)
+
+netstat -ntlp 												(n stands for numeric t for tcp l for listening sockets p for showing the processes accociated  with open ports)
+
+apt -> pip(python) -> youtube-dl                            (youtube-dl is for downloading playlists)
+
+apt install python-pip 				#it will not execute						(this will say to us that you are not root(admiistator) so next command should be executed)
+
+sudo apt install python-pip -y		#it will execute 					(step:1)		(sudo means do as super user,-y is for answering all questions yes)
+
+sudo pip install youtube-dl                                             (step:2)		(now we use pip to install youtube-dl)
+
+youtube-dl 'url'                                                        (final step)    (now youtube-dl is setted up and noe we can download videos)
+
+sudo apt install vim -y    												(vim is the upgraded vi which is a command line editor)
+
+vi dummy.txt   															(command line editor opens the file)
+
+
+
+vIM COMMANDS
+
+:q!								#two modes:command mode and insert mode right now this is a command so its command mode   press i or insert key on keyboaard for insert mode and press escape for command mode again															(manually type the : and q is for quit and ! is for quit without saving)
+
+:w 															 (w is for saving)
+
+:wq															 (write and quit)
+
+:set number 												(line numbers are now visible)
+
+:39 														(goes to line 39)
+
+shit+G  													(goes to  end)
+
+/protein                                                    (finds protein,press n for next protein)
+
+f+character          #f then type a character               (it will go to the character you typed)
+
+0               											(goes to the first line)
+
+% or shift+6  												(matching bracket)
+
+vi''														(for selecting)
+
+x                                                           (x for cutting )
+
+dw 															(cuts the whole word)
+
+dd 															(cuts the line)
+
+u 															(undo)
+
+dnd 														(delete n lines including current one,n should be a number here)
+
+p  															(p pastes after dd cuts)
+
+yy  														(copies)
+
+
+
+LINUX COMMANDS
+
+sudo mkdir /static 										    (this will make a static directory in / (root) )
+
+cd / 														(goes to / )
+
+ls -lh | grep static 										(finds the static directory for you)
+
+cd static
+
+touch myfile.txt 						#permission denied 
+
+chown nam static                                            (nam for sir nauman chown means change owner because static was first owned by root but now nam by ls -lh | grep static because it shows now that nam is the owner)
+
+cd static
+
+touch myfile.txt
+
+touch download-tut.sh  										(imagine that we write in it the youtube-dl command using vim)
+
+echo $PATH    	   											(it shows the a type of path where terminal searches for commands)
+
+which youtube-dl 											(searches for youtube-dl commant,which locates a command)
+
+# we will tell linux that youtube-dl is in download-tut.sh so
+
+./download-tut.sh  				#permission denied because linux wants to make sure that you are sure of doing what you wannt to do
+
+chmod +x download-tut.sh 									(+ stands for  enable and x stands for exuecution)
+
+./download-tut.sh                                            (now it is executed)
+
+-rwxrwxr-x   												 (rwx #group1 rwx #group2  rwx #group3,group 1 is the owner,group2 is the people who are in the group and group 3 means everybody else,r means read,w means write and x means executable)
+
+
+ZSH
+
+sudo apt install zsh git   	#step 1

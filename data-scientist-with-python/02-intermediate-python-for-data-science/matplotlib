@@ -1,0 +1,20 @@
+import matplotlib.pyplot as plt
+
+plt.plot(x_list, y_list)
+
+plt.hist(x_list, number_of_bins/khaane)
+
+plt.scatter(x_list, y_lsit, s = size_of_each_dot_list, c = colour_list, alpha = opacity) 
+						(opacity should be from 0 to 1,0 means completely transparent,1 is not transparent at all)
+
+plt.xscale('log')        (sets the x scale as logarithmic scale)
+
+plt.xlabel("x label")
+plt.ylabel("y label")
+plt.title("title")
+
+plt.text(x, y, "Blahbalh")
+
+plt.grid(True) 			(Draw grid lines on the graph)
+
+plt.show()       		(This should be done after doing all the three customizations whether in line graph,scatter or histogtram)

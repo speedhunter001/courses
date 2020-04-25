@@ -1,0 +1,64 @@
+DOM:
+For Simple DOM manipulation there is no need of JQuery
+
+Document Object Model
+
+javascript can e used to read/write/manipulate to the DOM
+
+Object Oriented Representation	
+
+In Document we have Root element(html tag) and inside it we have children.For example in <h1>My heading</h1> My heading is called text nodes.href in a tag and things like this is called an attribute
+
+console.dir(document);		(This will show on console of browser the many properties of document and the things you can access)
+
+console.log(document.domain);		(shows the domain on console)
+
+console.log(document.URL);		(shows the url on console)
+
+console.log(document.title);		(shows the title on console)
+
+console.log(document.doctype);		(shows which html is being used on console)
+
+console.log(document.head);		(shows what is in head on console)
+
+console.log(document.body);		(shows what is in body in console)
+
+document.title = "oo";		(This changes the title of the html)
+
+console.log(document.all);		(This shows each and every tag used in form of array but its not actually an array only for index accessing so the proper name is HTML collection,it also shows the properties each tag has)
+
+document.all[10].textContent = "hello";		(for example if the tag in tenth is p then it changes the content to hello,but its not a good method to edit stuff because later you cna change the tag which would not make sense in this kind of situation)
+
+console.log(document.forms);	(This shows the forms on console in form of HTML collection)
+
+console.log(document.links);	(This shows the links on console in form of HTML collection)
+
+console.log(document.images);		(This shows the images on console in form of HTML collection)
+
+difference between .textContent and .innerText is that if inside the tag display:none is written then the .textContinent still prints on console on console.log but not show on the html file opened in browser but the .innerText oly shows the part whose style is not display:none just like the one showed in browser
+
+variable.innerHTML = '<h1>jjj</h1>';		(This adds these tags inside the tag,it does not changes the content)
+
+variable.style.bordeerBottom = 'solid 3px red';			(In this way you can change the things in style too)
+
+variable[0].style.fontWeight = 'bold'
+
+variable[0].style.backgroundColor = 'yellow';
+
+If we want to apply changes to each list item then we need to run a loop 
+
+variable.style.borderBottom = 'solid 4px'
+
+var input = document.querySelector('input');
+input.value = 'Hello world';
+(This changes the first input to hello world as there can be many inputs so it picks the first input)
+
+var submit = document.querySelector('input[type="submit"]');
+submit.value = "SEEEENNNDDD";	
+(This way helps to access a specific input)
+
+Keep in mind that if you do something by querySelector on a list variable without specifying index then it does not give error but it applies the change to the first element.
+
+var second = document.querySelector('.list-group-item:nth-child(2)');		(. in the start is for class,this will now store the second item in variable)
+
+querySelecotrAll() gives a node list so you can apply array functions too

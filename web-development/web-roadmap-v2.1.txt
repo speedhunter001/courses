@@ -1,0 +1,48 @@
+Web Developement roadmap by COLAB:
+
+Version-2.1 of web-developement roadmap for Batch-18 during semester-2 by COLAB. 
+
+
+
+------------------------ FRONT END WEB DESIGNING ----------------------------------
+
+1: HTML (1:00:41 hrs) : https://www.youtube.com/watch?v=UB1O30fR-EE 
+
+2: CSS (1:25:11 hrs) :  https://www.youtube.com/watch?v=yfoY53QXEnI 
+
+3: Bootstrap (1:13:26 hrs) : https://www.youtube.com/watch?v=5GcQtLDGXy8  
+   (Leave the javascript part and come back to it afterwards)
+
+4: Javascript (1:40:29 hrs): https://www.youtube.com/watch?v=hdI2bqOjy3c
+
+5: DOM manipulation(Playlist) :  https://www.youtube.com/watch?v=0ik6X4DJKCc&list=PLillGF-RfqbYE6Ik_EuXA2iZFcE082B3s
+
+6: Javascript ES6 (Playlist):  https://www.youtube.com/watch?v=2LeqilIw-28&list=PLillGF-RfqbZ7s3t6ZInY3NjEOOX7hsBv
+
+7: Jquery (1:01:09 hrs) : https://www.youtube.com/watch?v=3nrLc_JOF7k&list=PLillGF-RfqbYJVXBgZ_nA7FTAAEpp_IAc
+
+8: (Optional) Javascript API projects (1:37:34 hrs) : can be taken from Hamza Qureshi (COLAB tier-3 member)
+
+
+
+----------------------- BACK END SERVER SIDE WEB PROGRAMMING------------------------
+
+1: Node.js (24:45 mins) : https://www.youtube.com/watch?v=U8XF6AFGqlc
+
+2: MongoDB (32:11 mins) (optional) : https://www.youtube.com/watch?v=pWbMrx5rVBE
+
+3: Express and node.js (3:06:82 hrs) (optional) : https://www.youtube.com/watch?v=k_0ZzvHbNBQ&list=PLillGF-RfqbYRpji8t4SxUkMxfowG4Kqp
+
+4: SQL crash course (58:38 mins) : https://www.youtube.com/watch?v=nWeW3sCmD2k&t=977s
+
+5: PHP course (4:03:98 hrs) : https://www.youtube.com/watch?v=oJbfyzaA2QA&list=PLillGF-Rfqbap2IB6ZS4BBBcYPagAjpjn (VERY IMPORTANT)
+
+6: PHP Rest API (1:03:00 hrs) (optional) : https://www.youtube.com/playlist?list=PLillGF-RfqbZ3_Xr8do7Q2R752xYrDRAo
+
+7: Laravel (2:06:44 hrs) (optional) : https://www.youtube.com/watch?v=EU7PRmCpx-0&list=PLillGF-RfqbYhQsN5WMXy6VsDMKGadrJ-
+
+8: Django (1:08:10 hrs) (optional) : https://www.youtube.com/watch?v=D6esTdOLXh4
+
+-----------------------------------------------------------------------------------------
+
+Total time: around 24 hours of videos 

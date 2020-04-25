@@ -1,0 +1,80 @@
+<button onclick="buttonClcik(1)" ..>Click here</button>		(Now this is calling a function named buttonClick)
+
+In javascript file:
+function buttonClick(){
+	console.log("button clicked");
+}
+
+(This is the old way of doing it so you should not better not do this,its better to use event listener because you don't want to keep everything separate)
+
+<button ..>Click here</button>	
+
+In Javasccript file:
+var button = document.getElementById('button').addEventListener('click',function(){
+	console.log("hello");
+})
+(This says that on event click function will be called)
+				OR
+var button = document.getElementById('button').addEventListener('click',buttonClick);
+
+function buttonClick(e){
+	console.log(e);
+	console.log(e.target);
+	console.log(e.target.id);
+	console.log(e.target.className);
+	console.log(e.target.classList)
+}		(e is an event parameter,you can call it anything but when you listen an event and you give a parameter to its function then it will be an event parameter,this will give us all the things we can do this with this event,you can see it on console,e.target gives is which actual element is clicked,in this case its button,e.target.id gives us the id,e.target.className gives us the string of whole classes,e.target.classList gives us the List of the classes)
+
+function buttonClick(e){
+	console.log(e.clientX);
+	console.log(e.clientY);
+	console.log(e.offssetX);
+	console.log(e.offsetY);
+	console.log(e.altKey);
+	console.log(e.ctrlKey);
+	console.log(e.shiftKey);
+	console.log(e.type);
+}		(e.clientX gives the x axis from the browser window from left side,e.clientY is the position from top of the browser window,e.offsetX gives the position on x axis from the element not from the browser window,e.clientY gives the position from the element,e.altkey etc gives true or false,so here it would give us true if that key was pressed while pressing the button,e.type will give us click in this case)
+
+'click'
+
+'dblclick'		(Double click)
+
+'mousedown'
+
+'mouseup'
+
+'mouseenter'	(When the mouse enters)
+
+'moouseleave'	(When the mouse leaves)
+
+'mouseover'		(It also fires when the mouse enters but it also fires when mouse is over any internal thing too like child)
+
+'mouseout'		(It fires when the mouse leaves the inner thing,it also fires when the mouse leaves the parent)
+
+'mousemove'		(When the mouse moves inside)
+
+(These are the events and we can know which event happened by the e.type)
+
+
+Events for type=text:	
+
+'keydown'		(When a key is down)
+
+'keyup'			(When the key is up)
+
+'keypress'		(When a key is pressed)
+
+'focus'			(It works when you click inside an input)
+
+'blur'			(When we click out of input we get blur)
+
+'cut'			(Event fires off when you cut something)
+'paste'			(Event fires off when you 
+paste something)
+
+'input'			(Input is anything that you write so even if you cut its input and even if you paste its input)
+
+'change'		(You can use it when you have options,it will also fire input event when change event is fired off)
+
+'submit'		(So without  back-end it actually submitting to the page so you need to write e.preventDefault which will prevent it from happening so now the submit function will work)

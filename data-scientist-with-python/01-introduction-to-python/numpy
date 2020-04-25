@@ -1,0 +1,17 @@
+NUMPY:
+
+Numeric python
+
+Used for converting lists into arrays so now we can do attition etc on our lists
+
+Great for vector arithmetic
+
+We can also use boolean operations 
+
+light = np.array(bmi<21)  (creates a boolean array for elements less than 21)
+
+print(bmi[light])  (If we do print light then the boolean array is given so we give it as index)
+
+mean,median,standard deviation etc and correlation are many methods of numpy
+
+corr = np.corrcoef(np_baseball[:,0], np_baseball[:,1])  (The correlation between first and second column)

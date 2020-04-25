@@ -1,0 +1,5 @@
+Writing *args in parameter means that you can use multiple arguments and all of the parameters are present in tuple in args
+
+Writing **kwargs converts the keyword arguments given to a dictionary stored in kwargs
+
+Note:* and ** are important not the names so names can be changed

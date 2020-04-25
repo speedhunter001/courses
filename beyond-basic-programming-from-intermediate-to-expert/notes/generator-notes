@@ -1,0 +1,19 @@
+range() is a generator
+
+def myrange(n)
+	x = 0
+	while x < n:
+		yield x
+		x = x + 1
+
+(What yield do is that it returns the number and maintains the function state so next time myrange is called it will run line x = x + 1 and so on,now this function is a generator because it has yield keyword in it)
+
+for i in myrange(5):
+	print(i)
+
+r = myrange(5)
+next(r)						(it is the same as iteration)
+							
+%time g = ( i**2 for i in range(100000) )
+							( parenthesis at the start and the end are for generator syntax )
+

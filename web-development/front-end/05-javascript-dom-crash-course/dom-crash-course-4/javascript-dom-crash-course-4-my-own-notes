@@ -1,0 +1,7 @@
+confirm('message')		(It will show a popup with the message and asking yes and no and it can be used in conditionals so most probably it returns true for yes and vice versa)
+
+variable.removeChild(..);	(Parameter should be an element that is a tag)
+
+Array.from(..)	(This is used to convert HTML Collection etc to Array)  
+
+(No styling in index.html so thats why it appears ugly)

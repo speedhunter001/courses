@@ -1,0 +1,48 @@
+TRAVERSING THE DOM:
+
+let variable = document.querySelector(#items);   (It can be class or an id etc)
+
+variable.parentNode;   (Like there is something inside div tag then div is parent and inside it the tags are its child and they are siblings to each other)
+
+variable.parentElement	(.parentNode and ParentElement for the most part can be interchangeable)
+
+variable.childNodes;	(It gives a Nodelist,It can even catch linebreaks which i.e actual space between lines not the tag and it will call it text so better not use this)
+
+variable.children;		(It gives an htmlCollection,it does not catch the actual linebreaks)
+
+variable.firstChild;	(It also catches the linebreaks i.e called text)
+
+variable.firstElementChild		(It works fine and it does not catches the linebreaks)
+
+variable.lastChild;	(It also catches the linebreaks i.e called text)
+
+variable.lastElementChild		(It works fine and it does not catches the linebreaks)
+
+variable.nextSibling;	(It also catches the linebreaks i.e called text)
+
+variable.nextElementSibling		(It works fine and it does not catches the linebreaks,it will also give us null if there is no sibling)
+
+variable.previousSibling;	(It also catches the linebreaks i.e called text)
+
+variable.previousElementSibling		(It works fine and it does not catches the linebreaks)
+
+
+
+let newDiv = document.createElement('div');		(It creates a new Element)
+
+newDiv.className = 'hh';   (This is used for adding class to the tag)
+
+newDiv.id = 'jjj'; 		(This is used for adding id to the tag)
+
+newDiv.setAttribute('title', 'Hello dd')	(This method requires two parameters,this will create an attribute inside div tag title='hellodd')
+
+let newdivtext = document.createTextNode('Hello world');		(This creates the text node but we actuall need to insert it inside div tag)
+
+newDiv.appendChild(newDivText);		(This inserts the text now in div tag)
+
+let container = documetn.querySelector('header .container');		(Inside header tag the container class,Now we need to insert the div tag inside the HTML collection that is in DOM)
+
+let h1 = document.querySelector('header h1');		(Inside header tag h1)
+
+container.insertBefore(newDiv, h1);		(This takes two parameters,the tag you want to insert and the second whose before you want to insert the tag)
+

@@ -1,0 +1,23 @@
+Iterable:
+
+Which can return a iterator is an iterable
+
+Iterator:
+
+On which by using next(..) we can go on next element
+
+enumerate() returns an enumerate object that produces a sequence of tuples, and each of the tuples is an index-value pair.
+
+zip(..) takes any number of iterables and returns a zip object that is an iterator of tuples
+
+* unpacks an iterable such as a list or a tuple into positional arguments in a function call,since it unpacks so it will exhaust it
+
+We can, however, reverse what has been zipped together by using zip() with a little help from *
+
+[[output expression] for iterator variable in iterable predicate ]
+
+[member for member in fellowship if len(member) >= 7]
+
+[member if len(member) >= 7 else "" for member in fellowship]    (An if statement is used only in predicate but an if-else is used in output expression)
+
+generator expressions basically have the same syntax as list comprehensions, except that it uses parentheses () instead of brackets []

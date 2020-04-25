@@ -1,0 +1,307 @@
+ES6/ES2015:
+
+ECMASCRIPT:
+
+ECMAScript is a scripting language standard and specification and languages like javaScript,Jscript and ActionScript are all based on ECMAScrippt standard
+
+ES6 is the most recent version of ECMAScript,very significant update with many changes
+
+First major update since ES5(2009)
+
+ES6 and ES2015 are the same thing
+
+GOALS OF ES6:
+javascript be taken more seriously,there were no classes and people did not respected it but now its a respected programming language
+
+Fix some issues from ES5
+
+Backward compatibility-ES5 code should work in ES6
+
+Modern Syntax
+
+Better Scaling and better for big applications
+
+New Features in Standard Library
+
+Transpilers can be used to compile ES6 code to ES5 like Babel,Traceur,closure etc.If you want to build a production application and you want to use ES6 then you should use transpiler because you don't know what browsers users are using
+
+What's New?
+let and const Declarations
+Destructuring Assignment
+Classes and Inheritance
+Template Strings
+String Features
+Math and Number Features
+New Data Stuctures
+Iterators
+Generators
+Promises and Asynchronous Data
+Arrow Functions
+
+
+
+
+For babel first you need to get nodejs instlalled so go tho nodejs.org and download it,Check the second video of this course,It may or may not help but you can see the setup procedure in babeljs.io website
+
+
+
+VAR,LET AND CONST:
+A variabele declared with var has a global scope,but let has block-level scope so if we declare a variable with let for it to be global and then redeclare it in loop or somewhere else it will be a local one,a completely different one just like a normal one	 
+
+function testvar(){
+var a = 30;
+
+if(true){
+	var a = 50;
+	console.log(a);
+}
+console.log(a);
+}		(Both will give us 50 because var makes the variable global)
+
+function testlet(){
+let a = 30;
+
+if(true){
+	let a = 50;
+	console.log(a);
+}
+console.log(a);
+}		(First one will give 50 and second one will give 30 because of let because in if statement a is declared again with let so its scope is limited to if)
+
+for (var i = 0; i < 10; i++){
+	console.log(i);
+}
+
+console.log(i);		(This console.log outside for loop will give us 10 because in loop i is global due to var)
+
+for (let i = 0; i < 10; i++){
+	console.log(i);
+}
+
+console.log(i);		(This console.log outside for loop will give us error because in loop i is has scope for for loop due to let)
+
+const colors = [];
+
+colors.push('red');
+colors.push('green');
+colors = 'Greeeenee';		(This will give us error because in const if once its defined if we try to change the whole thing it will give us error)
+
+CLASSES AND INHERITANCE:
+class User{
+	constructor(username, email, password){
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
+
+	static countUsers(){
+		console.log('There are 50 users');
+	}
+
+	register(){
+		console.log(this.username + ' is now registered ');
+	}
+}
+
+let bob = new User('bob', 'ullu@gmail.com', 'lifesucks');
+bob.register();
+
+'User.countUsers();		(Now this is a class,Above is given the way to type the constructor,If you give a varable in parameter while defining constructor then variable becomes a member of the class just like above,register is a method,If you do the static then you don't need to make the object,Above is given the way to use a static method)
+'
+class Member extends User{
+	constructor(username, email, password, memberPackage){
+		super(username, email, password);
+		this.package = memberPackage;
+	}
+
+	getPackage(){
+		console.log(this.username + ' is subscribed to ' + this.memberPackage);
+	}
+}
+
+let mike = new Member('ullu', 'ullu@gmail.com', '12321', 'standard');
+
+mike.getPackage();
+mike.register();		(This is the way to do inheritance through extends keyword,super is used to do this.vaiable = variable to all the parameters but it will not work for memberPackage,we can obviously also use the methods of parent class)
+
+https://www.javatpoint.com/javascript-oops-classes
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
+https://developer.mozilla.org/en-US/docs/Glossary/Static_method
+
+(Everything related to classes can be found in the first website address,static thing in the other too)
+
+TEMPLATE LITERALS:
+let template = `Helllloow I am a genius but you are an ullu ka patha yeah no doubt in that but there are some people whor 10000 times more ullu ka patha than you`;		(Now can you use template literals by backticks(`) for long sentences because by single or doubl quotes they break on the next line)
+
+function makeUpperCase(word){
+	return word.toUpperCase();
+}
+
+let template = `<h1>${makeUppercase('hello')}`,${name}</h1>`;		(You can also telplate for function call inside and also for a variable withoud need of concatenating)
+
+let string1 = "hello my name is ammar";
+
+console.log(string1.startsWidth('hello'));		(startsWidth returns true if the string starts with the word you have given in parameter,in this case true)
+
+console.log(string1.endsWidth('ammar'));		(endsWidth returns true if the string ends with the word you have given in parameter,in this case true)
+
+console.log(string1.includes('my'));		(includes returns true if the string includes the word you have given in parameter,in this case true)
+
+console.log(0xff);		(You can also write hexadecimal due to hexa console.log will print the number which is given in hexadecimal)
+
+console.log(0b101011);		(You can also write binary due to binary console.log will print the number which is given in binary)
+
+console.log(0o543);		(You can also write octal due to octal console.log will print the number which is given in octal)
+
+console.log(Number.isFinite(3));		(It returns true but will return false if parameter is Infinity or NaN(Not a Number))
+
+console.log(Number.isNaN('strirng'));		(It returns true but will return false if parameter is a number)
+
+console.log(Number.isInteger(-3));		(It returns true but will return false if parameter is not an integer)
+
+function greet($greeting = 'hello world'){
+	console.log($greeting);
+}		(I don't know about $ sign but I think its part of variable name);
+
+let args1 = [1,2,3];
+
+function test(){
+	console.log(args1);
+}
+
+test.apply(null, args);		(Old way)
+test(...args1);		(https://www.smashingmagazine.com/2016/07/how-to-use-arguments-and-parameters-in-ecmascript-6/    check spread operator in this website)
+
+SET:
+Set object lets us store unique values of any type they can be primitive values or object references
+
+A Set is a collection of values, where each value may occur only once.
+
+
+
+let myArray = [11,22,34,65];
+let mySet = new Set(myArray);
+
+mySet.add('100');
+mySet.add({a:1, b:2});
+mySet.delete(22);
+mySet.clear();	
+mySet.add('100');
+mySet.add('200');
+
+console.log(mySet);
+console.log(mySet.size);		(add adds a thing,clear deletes everything,.size gives the size)
+
+mySet.forEach(function(val){
+	console.log(val);
+});		(This is also possible)
+
+MAP:
+They are a key value pair
+
+Map is a collection of keyed data items, just like an Object. But the main difference is that Map allows keys of any type.
+
+
+let myMap = new Map([['a1', 'hello'],['b2','idiot']]);
+
+myMap.set('c3', 'foo');
+myMap.delete('a1');
+console.log(myMap);
+console.log(myMap.size);		(set adds the key and its value,delete only takes the key and deletes the key and its value,.size gives the size)
+
+WEAKSET AND WEAKMAP:
+These have to do with objects
+
+WeakSet is a special kind of Set that does not prevent JavaScript from removing its items from memory. WeakMap is the same thing for Map
+
+let car_weak_set = new WeakSet();
+let car1 = {
+	make:'honda',
+	model:'civic'
+}
+car_weak_set.add(car1);
+
+let car2 = {
+	make:'toyota',
+	model:'camry'
+}
+
+car_weak_set.add(car2);
+
+
+car_weak_set.delete(car1);
+console.log(car_weak_set);
+
+
+
+
+let car_weak_map = new WeakMap();
+
+let key1 = {
+	id:1
+}
+
+let car1 = {
+	make:'honda',
+	model:'civic'
+}
+
+let key2 = {
+	id:2
+}
+
+let car2 = {
+	make:'toyota',
+	model:'camry'
+}
+
+car_weak_set.set(key1, car1);
+car_weak_set.set(key2, car2);
+
+
+car_weak_map.delete(key1);
+console.log(car_weak_map);
+
+https://javascript.info/map-set-weakmap-weakset		(This is the webiste where you can learn more)
+
+ARROW FUNCTIONS:
+let add = function(a,b){
+	let sum = a + b;
+	console.log(sum);
+	return false;
+}
+
+let add = (a,b) => {
+	let sum = a + b;
+	console.log(sum);
+	return false;
+}		(This is the way to write arrow functions)
+
+PROMISES:
+It is used for deferred and asynhronous computations and it represents an operation that hasn't completed yet but is expected in future
+
+https://javascript.info/promise-basics		(You can check the website)
+
+var myPromise = Promise.resolve('foo');
+myPromise.then((res)=>console.log(res));
+
+GENERATORS:
+Generators are functions that can be paused and resumed but at each pause it can yield back a value
+
+function *g1(){
+	console.log('hello');
+	yield 'Yield 1 ran';
+	console.log('world');
+	yield 'Yield 2 ran';
+	return 'Returned';
+}
+
+var g = g1();
+
+console.log(g.next().value());
+console.log(g.next().value());
+console.log(g.next().value());
+
+for (let val of g){
+	console.log(val);
+}		(You put an asterisk in the function which has yield in it,You cannot call generator right away so you put it in a variable,g.next() gives the thing you want to print here and the object of yield and done:false because the function is not completed yet,.value() gives the thing which was yielded,so to finish we need to do this over and over again,we can also use generator in for of loop so in the loop val is the yielded thing)

@@ -1,0 +1,188 @@
+Css:
+Not a programming language
+It means Cascading Stylesheets
+Used for website layout and design
+Can be extended with Sass/Less
+
+
+3 Methods for adding CSS:
+
+1.Inline CSS: Directly in the html element in a tag like href or style but its a horrible practice e.g 
+<h1 style="color:red">Hello World</h1>
+
+2.Internal CSS: USing <style> tags within a single document,still not suggested fattens the file u want to keep it slim
+in head tags:
+	<style type="text/css">
+		h1{
+			color:blue;
+		}
+	</style>
+
+3.External CSS: Making an external .css file and then linking it to your html file.
+Make a separete file with .css extension
+and in head then write the link tag 
+	In style.css
+		h1{
+			color:green;
+		}
+
+	In main html file in head
+	<link rel="stylesheet" type="text/css" href="css/style.css">   css is directory here and style.css is our .css file
+
+	selector { property : value; } (: is prop/val separator and ; declaration separator and {} declaration start and end)
+
+
+Colors In CSS:
+
+1.Color Names        like red,blue etc
+
+2.HTML5 Color Names  like misty rose etc
+
+3.Hexadecimal        like #00ff00
+
+4.RGB				 rgb(0,0,255)
+
+Usually you will see em for line-height but you can also use px
+
+id are unique and classes can be reused like in main html file
+	<div class="box-1"><div>
+and in style.css
+	.box-1{
+
+	}   (.is for classes)
+
+The <div> tag is nothing more than a container unit that encapsulates other page elements and divides the HTML document into sections. Web developers use <div> elements to group together HTML elements and apply CSS styles to many elements at once.
+
+margin is basically spacing around an element
+
+width:960px but its nor responsive to readjustment of browser size so
+width:80%  its responsive 
+
+see the box model,padding is space between that element and its edge,paddding is space inside border,margin is space outside border
+
+ways to do 
+
+p{
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-right:10px;
+	margin-left:10px;
+}
+
+SHORTCUT
+p{
+	margin:5px 10px 5px 10px
+}  (top,right,bottom,left)
+
+EVEN SHORTER
+p{
+	margin:5px 10px
+} (top bottom are same so 5px and right left are same so 10px)
+
+SAME WAYS FOR PADDING
+
+
+in style.css
+*{
+	
+}  (* means for whole page,kind of reset)
+
+.box-1 h1{
+	
+}  (it will change any h1 in this class not each one)
+
+a{
+	
+} (so all hrefs will be of this style)
+
+a:hover{
+	
+} (links have seperate states like hover,active,visited so this is a way to change a way to style a state)
+
+<form class="my-form">
+	<div class="form-group">
+		..
+	</div>
+</form>
+
+in style.css
+
+.my-form .form-group{
+	
+}
+
+.my-form input[type="text"], .my-form textarea{
+	padding:8px;
+	width:100px
+}   (if we don't write type then it applies to all inputs of the class, we also want to apply the style to textarea so this is the way)
+
+Positioning in CSS:
+
+1.Static  By default
+
+2.Relative  element is put relative to its normal position but we can add that put on top etc 
+
+3.Absolute  target whatever position we want inside of a relative element
+
+4.Fixed    it will be fixed wherever we are
+
+4.Initial  initial sets the property to its default value
+
+5.Inherit  inherit will inherit the property of its parent element
+
+
+
+.p-box{
+	position:relative;  (If this is not written then the h1 of p-box class  wil go 40px  from  top of the page but when written then it will be relative to its position)
+}
+
+.p-box h1{
+	position:absolute;
+	top:40px
+} 
+
+<h1 class="button fix-me">hello</href>  (way to use more than one class)
+
+in style.css
+.fix-me{
+	position:fixed;   (so the hello wil be fixed on the screen no matter where we go or scroll)
+	top:40px
+}  
+
+.p-box{
+	background-image:url('../images/bgimage.jpg')    (.. means go back one directory)
+	background-repeat:no-repeat;
+	background-position:100px 200px;  (instead of pixels we can also write center,top etc)
+}
+
+PSEUDO CLASS:
+.my-list li:first-child{
+	background: red;  (:after li means pseudo class,first-child means that first element of list will be red)
+}
+
+.my-list li:nth-child(5){
+	background:yellow;  (this method is used for nth child)
+}
+
+.my-list li:nth-child(even){
+	background:yellow;  (this method is used for even elements r childs)
+}
+
+for id
+
+#main-header{
+	..
+}
+
+#showcase{
+	min-height:300px;   (this helps in case when page size changes so the height becomes responsive)
+}
+
+@media(max-width:600px){
+	#main{
+	  ..
+	}
+	#sidebar{
+	..
+	}
+}   (this is a media query,it works only when width is 600 px like the page/browser is shrinked)

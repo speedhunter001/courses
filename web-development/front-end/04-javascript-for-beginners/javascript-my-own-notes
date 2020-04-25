@@ -1,0 +1,465 @@
+JAVASCRIPT:
+High level,interpreted programming langage
+Conforms to the ECMASCRIPT specification
+Multi paradigm(you can use both oop and functional programming)
+Runs on the client/browser as well as on the server(Node.js)
+You can use on front end like for forms etc but you can use it for interacting with databases by using a javascript runtime called nodejs
+PHP,Python C sharp etc they are used for server side,so javascript runs on browser
+You can also build interactive interfaces with javascript frameworks such as react,angular,view js
+You can build server-side and full stack applications using nodejs,you can even build mobile apps with technologies like react native and native script,even desktop apps like with electron
+Javascript is fast,powerful
+
+2 WAYS TO PUT JAVASCRIPT IN HTML:
+
+1.with <script> tags
+
+2.In a separate file like this
+	<script src="main.js"></script>
+so the other file should be of .js extension
+
+In javascript file there is no need of tags simply write our code
+
+alert('hello world');     (colon is not necessary in console,This makes a popup on the page,but you should not use this for debugging,outputting values because it stops the rest of your script from running)
+
+So we use console in browser so in chrome in menu there is more tools->developer tools->console or shortcut is F12
+
+console.log('hello');   (hello appears in console)
+    	  
+You can find the documentation of console by MDN console
+
+console.error('this is an error');  (error appears as red in console and it also shows from where it is producing an error)
+
+console.warn('this is a warning');  (warning appears as yellow in console)
+
+3 WAYS TO USE VARIABLES:
+
+1.var     It is not recommended because it is used for declaring globally
+
+2.let     It provides more functionality,with it you can reassign values
+let age = 39;
+age = 31;
+console.log(age);
+
+3.const   It can't be directly changed,it can't be directly reassigned 
+
+Its better to use const unless you know that you have to change the values because const is more secure,robust
+
+let score;    (way to initialize just like in c++ but const score; is not possible)
+
+// is used for comments just like in c++
+
+TYPES OF DATATYPES:
+1.string     const name = 'john';  (single and double quotes both can be used)
+
+2.Numbers    const age = 30;     (there is not float or int thing in javascript its just a number)  
+
+3.Boolean    const iscool = true;
+
+4.Null       const x = null;   (basically empty)
+
+5.undefined   const y = undefined;  or   let y;
+
+6.Symbol 
+
+Semicoolon ; is not mandatory but most of developers use that
+
+console.log(typeof name);   (typeof shows the type)
+
+typeof null   is not object its wrong
+
+CONCATENATION:
+
+console.log('my name is' + name + 'and I am' + age);            (This does not give error in other languages it gives error coz age is number,its an old method)	 
+
+TEMPLATE STRING:
+
+console.log(`My name is $(name) and I am $(age)`);         ( `` are called backticks which makes it a template string and whenever we want to use variables we use $(variable) )
+
+const hello = `My name is $(name) and I am $(age)`;         (also possible)
+
+const s = 'hello world';
+console.log( s.length );    (length is a property)
+
+DIFFERENCE BETWEEN PROPERTY AND METHODS:
+Property don't have parenthesis but methods do
+Method is basically a function that is associated with an object
+
+const s = 'hello world';
+console.log( s.toUpperCase() );     (This method turns the letters to Uppercase letters)
+
+const s = 'hello world';
+console.log( s.toLowerCase() );    (This methods turns the letters to lowercase)
+
+const s = 'hello world';
+console.log( s.substring(0,5) );   (It should give us hello because it starts at 0 index and stops before fifth index and this function returns the substring)
+
+const s = 'hello world';
+console.log( s.split('') );      (This creates an array of 12 letters of s)
+
+const s = '1,2,3';
+console.log( s.split(',') );    (It wil also create an array)
+
+/*..
+	..
+*/          (for multi line comments)
+
+
+2 WAYS TO MAKE ARRAYS:
+
+1.Through constructor  
+const numbers = new Array(1,2,3,4);
+console.log(numbers);              (This will print out the numbers one by one) 
+
+2.by initializing 
+const fruits = ['ammar', 'oranges', 'peers'];
+
+In javascript arrays are more like list of python because they can hold multiple datatypes 
+
+ARRAYS:
+Arrays are basically variables that hold multiple values or type of a list
+
+You don't need to specify the number of elements the array gonna hold
+
+You can acces through  fruits[0];  an arrays have 0 based index
+
+fruits[3] = 'grapes'      (this is also possible because only 3 elements i.e 0,1,2 index are present,even const will not give you error here but if fruits = [] then its not possible,so there is difference between manipulation and reassigning)
+
+fruits.push('mangos');     (it works as the append function of python)
+
+fruits.unshift('strawberries');    (This function adds at the beginning)
+
+fruits.pop();           (This erases the last element)   
+
+Array.isArray(fruits);    (This function will return true if the variable holds an array)
+
+fruits.index('oranges')    (This return the index of the element)
+
+fruits.length            (This is a property not a method and it returns length)
+
+OBJECT LITERALS:
+They are basically dictionaries of python or map of c++
+
+Object literal property values can be of any data type, including array literals, functions, and nested object literals.
+
+
+Object literals are defined using the following syntax rules:
+
+A colon separates property name from value.
+A comma separates each name-value pair from the next.
+There should be no comma after the last name-value pair
+
+Object literals are basically just key value pairs
+
+const person = {
+	firstname : 'john',
+	ln : 'doe',
+	age : 30,
+	hobbies:['music']
+	addres:{
+		street:50
+	}
+}
+
+console.log(person);    (This will show you the object literal,but if you were to alert this its wil show you object so alert is not a good idea)
+
+Difference is that keys can be without quotes i.e no string or they can be just like a variable just like above but the recemmonded thing is this variable thingy
+
+person.firstname   (This will let us acces the value we can also use the person[firstname] but we cannot do other things that we can do here)
+
+console.log(person.firstname, person.ln)    (You can show more on console by using comma)
+
+person.hobbies[0];    (This will give us 'music' but its possible through dot index)
+
+person.address.street;
+
+const{firstname, ln} = person     (Think of this not as assignment but pulling these keys out and making them actual variables)
+
+person.email = 'ullupulllu@gmail.com'   (This adds another key)
+
+const todos = [
+	{
+	id:1,
+	text:'Take'
+	}
+]
+console.log(todos[0].id)     (This is the way to access a value in object literal inside an array)
+
+JSON:
+Json is a data format and its used alot within you know full stack development and using API when you are sending data to a server you usually send it in JSON format,its very similar to object literals 
+
+you can json converter on internet but the difference in syntax is that Keys should have double quotes around them and if values are strings they must also have double quotes
+
+so if we want to send the todos to our server then all we do is this 
+const todosJSON = JSON.stringify(todos)
+
+FOR LOOP:
+for(let i = 0; i < 10; i++){
+	console.log(i);
+	console.log(`For loop numbre $(i)`);
+}  
+
+for loop is same except the variable thing 
+for(initialization; condition; increment){}
+
+WHILE LOOP
+let i = 0;
+while(i < 10){
+	console.log(i);
+	i++;
+}
+
+In while loop initializtion is before while condition in while(condition) and must not forget the incrementation otherwise it will be an infinte loop 
+
+FOR OF LOOP 
+It works for an array,we can also use the normal for loop
+
+for(let t of todos){
+	console.log(t);     
+}  
+
+This is like the for loop of python but it does not work on object literal
+
+
+HIGH ORDER METHODS FOR ARRAY ITERATION:
+
+1.ForEach
+todos.forEach(function(todo){
+	console.log(todo.text);
+});
+
+forEach takes in a function
+
+
+2.Map
+const todotext = todos.map(function(todo){
+	return todo.text;
+});
+
+What maps do is that they return an array
+
+3.Filter
+const todoCompleted = todos.filter(function(todo){
+	return todo.isCompleted === true;
+})
+
+This will return an array which satisfies this condition
+
+
+We can also use a combination of functional programming
+const todoCompleted = todos.filter(function(todo){
+	return todo.isCompleted === true;
+}).map(function(todo){
+	return todo.text;
+})
+
+CONDITIONALS:
+const x = '10';
+if(x == 10){
+	console.log('x is 10');
+}		
+
+This wil show x is 10
+== is equality between values but if there is another equal === it also matches the datatype 
+
+else if(condition) {
+	..
+}
+
+else{
+	
+}
+
+if (x > 5 || y > 10){
+	..
+}       (|| is or && is and)
+
+TERNIARY OPERATOR
+consst x = 10;
+const color = x > 10 ? 'red' : 'blue';   (This means that if x is greater than 10 then color = 'red' else color = 'blue')
+
+SWITHCH
+switch(color) {
+	case 'red':
+		console.log('color is red');
+		break;
+	case 'blue';
+		console.log('color is blue');
+		break;
+	default:
+		console.log('color is not red or blue');
+		break;
+}        (I think indentation is not necessary)
+
+FUNTIONS
+function add(num1, num2){
+	return num1 + num2;
+}    (function keyword is necessary)
+
+addNums(5,4);   (calling)
+
+function add(num1 = 0, num2 = 0){
+	return num1 + num2;
+}    (function keyword is necessary,by default parameters setting)
+
+ARROW FUNCTIONS:
+const add = (num1 = 0, num2 = 0) => num1 + num2;    (if one line so no need of braces due to this syntax and also if we don't write return or console.log() then automatically it will be returned,but if we put return it will not work so need to write return )
+
+const add5 = num1 => num1 + 5;
+
+OOP:
+
+TWO WAYS:
+1.CONSTRUCTOR FUNCTION
+2.CLASSES
+
+1.CONSTRUCTOR FUNCTION
+function Person(fn, ln, dob){
+	this.fn = fn;
+	this.ln = ln;
+	this.dob = dob;
+}      (This is the syntax,this keyword refers to an object, that object which is executing the current bit of javascript code,when we write variables in parameters it automatically declares it in object)
+
+const p1 = new Person('john', 'doe', '4-3-1980');   (instantiating)
+
+console.log(p1);  (This actually gives us an object literal with prefix of Person)
+
+console.log(p1.fn);   (we just get fn of our object)
+
+CONCEPT OF POINTERS IS DIFFERENT IN JAVASCRIPT:
+https://medium.com/@naveenkarippai/learning-how-references-work-in-javascript-a066a4e15600
+
+BUNCH OF METHODS FOR DATE OBJECT
+function Person(.., dob){
+	..
+	..
+	this.dob = new Date(dob);
+	this.get_birth_year = function() {
+		return this.dob.getFullYear();
+	}
+	this.get_full_name = function() {
+		return `$(this.fn) $(this.ln)`;
+	}
+}
+
+const p1 = new Person('jj', 'dd', '3-6-1979');
+
+console.log(p1.get_birth_year());
+
+
+console.log(p1.get_full_name());
+
+PROTOTYPE THINGY:
+function Person(fn, ln, dob){
+	this.fn = fn;
+	this.ln = ln;
+	this.dob = dob;
+}
+
+Person.prototype.get_birth_year = function() {
+	return this.dob.getFullYear();
+}
+
+Person.prototype.get_full_name = function() {
+	return `$(this.fn) $(this.ln)`;
+}
+
+(Now these methods are under prototypes in console,In this way methods are not with each object instance because we might not need to use these but we can still use)
+
+2.CLASSES
+
+class Person{
+	constructor(fn, ln, dob){
+		this.fn = fn;
+		this.ln = ln;
+		this.dob = new Date(dob);
+	}
+
+	get_birth_year() {
+		return this.dob.get_full_year();
+	}
+
+	get_full_name() {
+		return `$(this.fn) $(this.ln)`; 
+	}
+}       (Now in classes just by constructors parameters variables are declared,and it works in samw way as prototype thingy and add methods to prototype)
+
+const p1 = new Person('jj', 'dd', '3-6-1979');
+console.log(p1.get_birth_year());
+console.log(p1.get_full_name());
+console.log(p1);
+
+DOM:
+Dom is the document object model and basically its like a tree structure of your whole document so your html tags and stuff like that
+
+window is the parent of may functions of browser.
+
+SINGLE ELEMENT:
+console.log(document.getElementById('my-form'));  (we can even store this in a variable)
+console.log(document.querySelector('.container'));    (querySelector pretty much works like Jquery)  
+console.log(document.querySelector('h1'));
+
+MULTIPLE ELEMENT:
+console.log(document.querySelectorAll('.item'));  (this gives us a node list which is very similar to an array,this works for classes,ids etc,most recommended)
+console.log(document.getElementByClassName('item')); (What this gives us is actually an html collection you actually can't use array mmethods,you have to manually convert it into an array,but this is not recommendedd)
+console.log(document.getElementbyTagName('li'));  (Also not recommended)
+
+const items = document.querySelectorAll('.item');
+items.forEach((item) => console.log(item));   (We are loop through list item and performing our function)
+
+const ul = document.querySelector('.items');
+ul.remove();   (so whole list will be removed,notice that its items not item)
+
+ul.lastElementChild.remove();  (removes the last child)
+
+ul.firstElementChild.textContent = 'Hello';  (This changes the content of first child)
+
+ul.children[1].innerText = 'brad';  (children method for any child,I gues that innerText and textContent are same)
+
+ul.lastElementChild.innerHTML = '<h1>Hello</h1>';  (This is for putting html) 
+
+const btn = document.querySelector('.btn');
+
+btn.style.background = 'red';  (This now makes the buttton red,so you can change anything now)
+
+btn.addEventListener('click', (e) => {
+	e.preventDefault();   (This is beause the form is not submitting at all bcs its not submitting)
+	console.log('click');
+});   (so this is what we call event handler,you can use variety of functions)
+
+JQUERY:
+It is a javascript library which makes it easy to select classes also ids,tags themselves and other things
+
+
+
+const myForm = document.querySelector('#my-form');
+const name_input = document.querySelector('#name');
+const msg = document.querySelector('.msg');
+
+myForm.addEventListener('submit', onSubmit);
+
+function onSubmit(e) {
+	e.preveentDefault();
+	console.log(nameInput.value); 
+	if(name_input.value === '' || email_input.value = ''){
+		msg.innerHTML = 'Please enter all fields';   (We can also use alert but its ugly looking and it also stops further code from running)
+		msg.classList.add('error');  (This now adds the eror class and does the styling of error class)
+		setTimeout(() => msg.remove(), 3000);
+	   (so now the message of msg disappears after 3000 seconds)
+	}
+	else {
+		const li = document.createElement('li');
+		li.appendChild(document.createTextNode(`${name_input.value} : ${email_input.value`}))
+
+		userList.appendChild(li);
+
+		//Clearing fields
+		name_input.value = '';
+		email_input.value = '';
+	}
+};  (writing .value will give us the actual name written)
+
+
+The data is not saved anywhere so you probably gonna have back-end like nodejs or PHP or Pyhon or something that connects to the database then what you do from your front-end is that you send requests using something like fetch API or Ajax.There is something also called local storage where you can store data in the user's browser so then it would be relevant to only user's browser
+
+Code including html/css:
+https://embed.plnkr.co/plunk/8ujYdL1BxZftGoS4Cf14

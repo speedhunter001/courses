@@ -1,0 +1,7 @@
+Asynchronous understaning:
+
+1.An event loop manages and distributes the execution of different tasks. It registers them and handles distributing the flow of control between them.
+
+2.Courotines are special functions that work similarly to Python generators, on await they release the flow of control back to the event loop. A coroutine needs to be scheduled to run on the event loop, once scheduled coroutines are wrapped in Tasks which is a type of Future.
+
+3.Futures represent the result of a task that may or may not have been executed. This result may be an exception.

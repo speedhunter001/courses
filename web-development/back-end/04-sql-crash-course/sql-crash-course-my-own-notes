@@ -1,0 +1,216 @@
+SQL:
+
+Structured Query Language
+
+Designed to work with databases
+
+Programming Language to work with relatioal databases
+
+Used on individual and corporate servers
+
+Its the main method of ineraction between an application and a relational database
+
+Popular Databases that Use SQL:
+MySQL
+PostgreSQL
+Oracle
+MS SQL Server
+SQLite
+dBase
+Hadoop
+MaxDB
+MariaDB
+Openbase
+
+SQL Tools:
+Command Line Client
+Adminer		(GUI available)
+Firebird
+MySQL Workbench(mySQL)
+PHPMyAdmin
+PG Admin 3(PostgreSQL)
+Sequel Pro(Mac)
+HeidiSQL
+
+You can download XAMPP it gives you apache server,php,mysql etc
+
+In browser type     locahost/phpmyadmin 	and for password go to user accounts and on root if there is not then go to edit privileges and set password and if you get booted out phpmyadmin because you are not logged in then what you need to do you xampp folder and then phpmyadmin and then config.inc.php and then put the password in the password which should be empty 
+
+CREATING A DATABASE:
+
+CREATE DATABASE test;		(Database can also be created through SQL,test is just the name and ; is necessary)
+
+DELETING A DATABASE
+
+DROP DATABASE test;		(This deletes/drops the test database)
+
+CREATING A TABLE:
+
+CREATE TABLE customers(
+	id INT NOT NULL AUTO INCREMENT,
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	email  VARCHAR(255),
+	address VARCHAR(255),
+	city VARCHAR(255),
+	state VARCHAR(255),
+	zipcode VARCHAR(255),
+	PRIMARY KEY(id)
+);		(to do all this first go to a database you created and then click on SQL and then go ahead,customers is just the name,in paranthesis of customers we give the fields we want to create and with them the datatype,NOT NULL means that id can't be NULL,AUTO INCREMENT means that next created will have an id with an increment of 1,it can be changed,VARCHAR means a string and in its brackets we show that how many characters it can have,Primary key is unique and in its bracket we specify the field which we want to be primary key)
+
+INSERT INTO customers (first_name, last_name, email, address, city, state, zipcode) VALUES ('John', 'Doe', 'j@ullo.com', 'ullu town', 'Pekhawar', 'Charghan', '01211');		(This is the way to insert data but you have to be inside the database,and customers)
+
+INSERTING:
+
+INSERT INTO customers (first_name, last_name, email, address, city, state, zipcode) VALUES ('John', 'Doe', 'j@ullo.com', 'ullu town', 'Pekhawar', 'Charghan', '01211'), ('John', 'Doe', 'j@ullo.com', 'ullu town', 'Pekhawar', 'Charghan', '01211'), ('John', 'Doe', 'j@ullo.com', 'ullu town', 'Pekhawar', 'Charghan', '01211');		(This is the way to insert multiple records)
+
+UPDATING:
+
+UPDATE customers SET email = 'genius@gmail.com' WHERE id = 3;		(Where here is very important because if you don't write Where then all emails will be replaced)
+
+DELETING A RECORD:
+
+DELETE FROM customers WHERE id = 3;		(This is the way to delete a whole record)
+
+ALTERING A TABLE:
+
+ALTER TABLE customers ADD testCol VARCHAR(255);		(A new column is added in every record)
+
+ALTER TABLE customers MODIFY COLUMN testCol INT(11);		(This changes the datatype)
+
+ALTER TABLE customers DROP COLUMN testCol;		(This is the way to delete a column)
+
+SELECTING:
+
+SELECT * FROM customers;	(* means everything so it will select everything)
+
+SELECT first_name, last_name FROM customers;		(This will only select the specified columns)
+
+SELECT * FROM customers WHERE id = 2;		(This is way to select a specific record,you better the id which is unique because for example you use first name then there may be two records with the same first name)
+
+SELECT * FROM customers ORDER BY last_name;		(This is the way to sort,order by last_name uses the last name to sort,this sorts in ascending order)
+
+SELECT * FROM customers ORDER BY last_name DESC;		(This sorts in descending order using the last name)
+
+SELECT * FROM customers ORDER BY last_name ASC;		(Just like default this sorts in ascending order)
+
+SELECT state FROM customers;		(This selects state)
+
+SELECT DISTINCT state FROM customers;		(If there is a state repeated two times so it only selects it once)	
+
+SELECT * FROM customers WHERE age < 30;		(This selects only the records which has has age less than 30)
+
+OPERATORS:
+= 		(Equal to)
+<>		(Not equal to but in many databases you can use !=)
+>		(Greater than)
+<		(Less than)
+>=		(Greater than or equal to)
+<=		(Less than or equalt to)
+BETWEEN  	(Between an inclusive range)
+LIKE 		(Match a character pattern)
+IN 		(Equal to one of possible multiple values)
+IS or IS NOT 	(Compare to null)
+IS NOT DISTINCT FROM		(Is equal to value or both are null)
+AS 		(Used to change a field name when viewing results)
+
+SELECT * FROM customers WHERE age BETWEEN 22 AND 40;		(This is the way to use Between operator)
+
+SELECT * FROM customers WHERE city LIKE '%n';		(% is called wild-card,means that it can be anything,so it means that which ends with n)
+
+SELECT * FROM customers WHERE city LIKE '%n%';		(Means that select any city that has letter n in it)	
+
+SELECT * FROM customers WHERE city NOT LIKE '%n%';		(It will give the cities which do not have the letter in it)
+
+SELECT * FROM customers WHERE state IN ('New York', 'New Hampshire');		(It will give us all the customers whose state matches either of these choices)
+
+INDEXES:
+
+An index can be created in a table to find data more effectively and efficiently
+
+Users do not see indexes,they are just used to speed up searches/queries
+
+Only create indexes on columns and tables that will be frequently searched	
+
+Its a pointer to data and a table
+
+CREATING AN INDEX:
+
+CREATE INDEX c_index ON customers(city);		(c_index is the name,so we want an index on city because it will be frequently searched so we are putting an index on it)
+
+SELECT city FROM customers;		(Now the search will be more fast)
+
+DELETING AN INDEX:
+
+DROP INDEX c_index ON customers;		(c_index is the name of index we created)
+
+CREATING A RELATIONSHIP BETWEEN TABLES:
+
+CREATE TABLE products (
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(255),
+	price INT,
+	PRIMARY KEY(id)
+);		
+
+CREATE TABLE orders(
+	id INT NOT NULL AUTO_INCREMENT,
+	orderNumber INT,
+	productId INT,
+	customerId INT,
+	orderDate DATETIME default CURRENT_TIMESTAMP,
+	PRIMARY KEY(id),
+	FOREIGN KEY(customerId) REFERENCES customers(id),
+	FOREIGN KEY(productsId) REFERENCES products(id)
+);		(default CURRENT_TIMESTAMP will manually include the date,time stuff for us,customersId is a foreign key field and matches to the id of customers,productsId is also a foreign key field which matches to the id field of products field)
+
+The purpose of foreign field is so we can prevent data corruption within our database or just create an unstable database,so it won't let us delete records that are needed for other records so thats why we need foreign key restraints
+
+JOINS:
+Table joins are used to combine rows from two or more tables based on a common field between them
+
+Types:INNER JOIN,LEFT JOIN,RIGHT JOIN,FULL JOIN
+
+INSERT INTO products(name, price) VALUES ('product one, 10'),('product two, 5'),('product three, 69'),('product four, 45');		(We are doing this inside products table)
+
+INSERT INTO orders(orderNumber, productId, customerId) VALUES (001,1,4),..,..,..,..;		(Inside order table we are inserting these values)
+
+Inner join returns all rows when there is at least one match in both tables
+
+SELECT customers.first_name, customers.last_name, orders.orderNumber FROM customers INNER JOIN orders ON customers.id = orders.customerId ORDER BY customers.last_name;
+
+SELECT customers.first_name, customers.last_name, orders.orderNumber, orders.orderDate FROM customers LEFT JOIN orders ON customers.id = orders.customerIfd ORDER BY customers.last_name;
+
+SELECT orders OrderNumber, customers.first_name, customers.last_name FROM orders RGHT JOIN customers ON orders.customerId = customers.id ORDER BY orders.orderNumber;
+
+https://www.w3schools.com/sql/sql_join.asp		(You can learn about joins from here)
+
+ALIASES:
+
+Aliases are used to give tables or columns a temporary name and make them more readable
+
+SELECT first_name AS 'First Name', last_name AS 'Last Name' FROM customers;		(If there are two or separate words then there should be quotes around them)
+
+SELECT CONCAT(first_name, ' ', last_name) AS 'Name', address, city, state FROM customers;		(Here what we are doing is that we are concatenating firs and last name and showing them as on column)
+
+SELECT o.id, o.orderDate, c.firstName, c.lastName FROM customers AS C,orders AS o;		(Here we are joining the table)
+
+SQL AGGREGATE FUNCTIONS:
+
+SELECT AVG(age) FROM customers;		(This will give us the average age)
+
+SELECT COUNT(age) FROM customers;		(It will give us the customers with age in the table)
+
+There are also are max,min,sum
+
+Group by statement is used in conjunction with an aggregate function to group the result set by one or more columns
+
+SELECT age, COUNT(age) FROM customers WHERE age > 30 GROUP BY age;		(What it will do is that it will find ages above than 30 and it will count how many times each age appears which is above than 30)
+
+SELECT age, COUNT(age) FROM customers GROUP BY age;		(It will give us every age and then count each age)
+
+SELECT age, COUNT(age) FROM customers GROUP BY age HAVING COUNT(age) >= 2;		(So it will only give us the whose count is either 2 or greater than 2)
+
+SELECT UCASE(first_name) FROM customers;		(It will make all the first names uppercase)
+
+SELECT LCASE(last_name) FROM customers;		(It will make all the last names lower case)

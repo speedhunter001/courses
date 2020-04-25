@@ -1,0 +1,44 @@
+Pandas:
+
+High level manipulation tool
+
+By Wes Mckinney and built on numpy
+
+You can create tabular table in a ditionarie columns name will be key and the full column data be value
+
+After importing pandas you can convert this in dataframe
+
+We can even create the index manually by any name
+
+Dataframe comes from csv file comma separated value,you can use the read_csv() function but it will automatically put the indexes in a separate unnamed column so you have to tell it that the first column is index of names you have given
+
+pd.read_cs("path/path2", index_col=0)
+
+bric["country"]  (This gives the column table but in series type)
+
+bric[["country"]]  (This gives the sub dataframe)
+
+bric[1:4]  (This is for slicing but for rows)
+
+But better method is loc(label based) and iloc(position based)
+
+bric.loc['..']   (This is series)
+
+bric.loc[['..']]  (This gives a dataframe but the benefit of this method is that you can use both columns and rows through comma at same time)
+
+bric.iloc[[1,2,3]]  (This can also be used for both rows and columns at same time but index based like in this case just first three rows will be selected but for using both rows and columns you should first write the rows then the columns)  
+
+Whether you use loc or iloc you have to first tell the rows then columns
+
+When you extract a column which holds boolean values as a Series not as a dataframe,then if you subset like cars[dr] dr stores the specific column that holds boolean values then the subset array will hold only the rows whose boolean column is only True
+
+for label,row in cars.iterrows():
+	cars.loc(label, "COUNTRY") = str.upper(row["country"])
+
+iterrows can be used in the loop,the iterrows gives the label of the rows and then the full row in series form so you can also apply subset methods to it but this method is not efficient because each time the loop is executed you are creating a new Pandas series:
+
+cars["COUNTRY"] = cars["country"].apply(str.upper)
+
+For the same seed the numpy random generator generates same random numbers because their logic has a mathematical formula thats why they are called pseudo random numbers
+
+

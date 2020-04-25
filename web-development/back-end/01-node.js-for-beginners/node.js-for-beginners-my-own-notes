@@ -1,0 +1,114 @@
+NODE.JS:
+
+Javascript runtime built on Chrome's V8 javascript engine
+
+Javascript running on server
+
+Used to build powerful,fast and scalable web applications
+
+Uses an event-driven,non-blocking I/O model
+
+Unlike php node operates on a single thread and uses non-blocking i/o calls which allows it to support tens of thousands of concurrent connections which are held in whats called an event loop thats why its called an event-driven system so the way node works optimizes throughput and scalibility in web applications with many i/o operations and this makes node extremely fast and efficient
+
+EVENT LOOP:
+
+An event loop works on one single thread,it waits for event and  it uses an event emitter class to bind events to listeners and it triggers a  callback when an event is detected which all happens asynchronously and its non-blocking
+
+Single-threaded
+
+Supports concurrency via events and callbacks
+
+EventEmitter class is used to bind events and events listeners
+
+
+On traditional side programming you have to wait for one task to finish before you can start another but with node.js you can have tens of thousands of connections at once because its on a single thread,other old tech like php and apache are synchronous and  node.js is asynchronous
+
+We can use node.js for REST APIs and backend applications like if you want the ability to accept get requests to get data from database and then serve it to a client or accept post requests or all other stuff
+
+We can also use to make Real-time Services(Chat,Games, etc),Blogs,CMS,Social Applications,Utilities and tools and pretty much anything that is nnot CPU-intensive
+
+NPM:
+
+Node.js Package Manager/Module
+
+Used to install node programs/modules
+
+Easy to specify and link dependencies
+
+Modules get installed into the "node_modules" folder
+
+Express-->Web development framework
+Connect-->Extensible HTTP server framework
+Socket.io-->Server side component for websockets
+Pug/Jade-->Template engine inspired by HAML
+Mongo/Mongoose-->Wrappers to interact with MongoDB
+Coffee-Script-->CoffeeScript compiler,its a superset of javascript
+Redis--Redis client library,which is kind of SQL database but also a cachig system
+
+Thousands of modules
+
+package.json File is an important file,is used for node packages and
+application,goes in the root of your package/application,it tells npm how your
+package is structured and what to do to install it,it holds
+name,version,dependencies(which packages used),^ in version means that its
+latest,you can also run   npm init   command in the directory and it will ask
+some questions and create it for you or you can also create it manually 
+
+You can install node.js from   nodejs.org  
+
+We can run javascript on node.exe in node.js folder in windows,we can't use things which have to do with browser,like document object
+
+By command line we can get same environment by just saying node(may work for linux)
+
+In the folder of .js file   node app.js  	(This runs the javascript file for us)
+
+You upload the php file and apache or whatever server you are using takes care of all that stuff but with node you have to create your own server
+
+In app.js file here
+
+
+
+const http = require('http');
+
+const hostname = '127.0.0.1'; 
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+	res.statusCode = 200;
+	res.setHeader('Content-type', 'text/plain');
+	res.end('Hello world');
+});
+
+server.listen(port, hostname, () => {
+	console.log('Server started on port' + port)
+})		('http' is the core module,hostname here is the loopback address,req is request and res is response,200 is the code that basically says that everything is ok)
+
+
+node app.js  	(This starts the server,In browser http://localhost or http://127.0.0.1:3000)
+
+
+
+const http = require('http');
+const fs = require('fs');
+
+const hostname = '127.0.0.1';
+const port = 3000
+
+fs.readFile('index.html', (err,html) => {
+	if (err){
+		throw err;
+	}
+
+	const server = http.createServer((req, res) => {
+		res.statusCode = 200;
+		res.setHeader('Content-type', 'text/html');
+		res.write(html);
+		res.end();
+	});
+
+	server.listen(port, hostname, () => {
+		console.log('server started on port ' + port);
+	})
+});		('fs' stands for file system which is a module,err is error,'text/html' is necessary here because file is html file,notice the write() and end() methods)
+
+

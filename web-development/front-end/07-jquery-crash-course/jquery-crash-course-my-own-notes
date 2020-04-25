@@ -1,0 +1,425 @@
+JQUERY:
+Its a smalll,fast and feature-rich Javascript library and it makes dom manipulation,event handling,Ajax etc
+
+Less code 
+
+https://github.com/bradtraversy/jquery_crash_course		(All the code files)
+
+Download from jquery.com 
+
+You can use also cdn from this website but it requires internet connection
+
+SELECTORS:
+$('h1').hide();		($ is for jquery method,you can use both single and double quotes,hide method hides it on page)
+
+$('h1#heading1').hide();		(#heading1 means that its an id)
+
+$('h2.heading2').hide();		(. means that its a class)
+
+$('.heading2').hide();		(We can even do this)
+
+$('p span').css('color', 'red');		(Inside p tag there is this span tag and css method takes a property and its value)
+
+$('ul#list li:first').css('color', 'red');		(Inside ul tag of id list the first li that is first child's color changes to red)
+
+$('ul#list li:nth-child(4n)').css('list-style', 'none');		(fourth list style is now none,you can even use even,odd,last)
+
+$(':text').hide();		(: is used for input and text here is type)
+
+$(':submit').hide();
+
+$(':button').hide();
+
+$('[href]').hide();		([] are for a tags here but if we want to be specific)
+
+$('a[href="http://yahoo.com"]').hide();		(so now the a tag in which href's value is this wil be targeted)
+
+$('*').hide();		(* means everything)
+
+EVENTS:
+$(#btn1).click(funtion(){
+	alert("Button clicked!);
+});
+
+(So click is the event here and its btn1 is id of a button)
+
+If you write your code in html file then you should do it in last portion of body because if you write it in head then it will not work because the it tries to grab button before it actually loads on the page the solution for that is:
+$(document).ready(funtion(){
+	$(#btn1).click(function(){
+		alert('Button clicked');
+	});
+});
+
+Even if you put it javascript and jquery in the last portion its better to write this document thing too
+
+$('#btn1').on('click', function(){
+	alert('button clicked!');
+});
+
+This does the same thing the first method is shorthand but alot people say that on method saves a couple of milliseconds
+
+$('#btn2').on('click', function(){
+	$('.para1').show();
+});
+
+(show() method shows when the para1 which is a class of para is hidden with .hide())
+
+
+$('#btn11').on('click', function(){
+	$('.para1').toggle();
+});
+
+(toggle() method first hides on first click and when you click the button again it shows)
+
+
+$(#btn1).dblclick(function(){
+	$('.para1').toggle();
+});
+
+(On double click)
+
+$(#btn1).hover
+(function(){
+	$('.para1').toggle();
+});
+
+(hover is not actually an event it combines both mouseenter and mouseleave events)
+
+$(#btn1).on('mouseenter',
+function(){
+	$('.para1').toggle();
+});
+
+$(#btn1).on('mouseleave',
+function(){
+	$('.para1').toggle();
+});
+
+(These two works same as hover above)
+
+
+$(#btn1).on('mousemove',,
+function(){
+	$('.para1').toggle();
+});
+
+(When mouse moves on the button in this case)
+
+$(#btn1).on('mousedown',
+function(){
+	$('.para1').toggle();
+});
+
+(When mouse key is pressed down)
+
+$(#btn1).on('mouseup',
+function(){
+	$('.para1').toggle();
+});
+
+(When mouse key is pressed up)
+
+
+$(#btn1).click(function(e){
+	console.log(e);
+	alert(e.currentTarget.id);
+	alert(e.currentTarget.innerHTML);
+	alert(e.currentTarget.outerHTML);
+	alert(e.currentTarget.className);
+});
+
+(When we write a parameter in function of an event its parameter for event,console.log(e) would give us the details and all the things we can use,innerHTML will give us what is inside the tags,outerHTML will give us the tags,className will give us the class if any)
+
+$(document).on('mousemove', function(e){
+	$('#coords').html('Coords: Y: ' +e.clientY+ " X: " +e.ClientX);
+});
+
+(#coords is here the id of a paragraph,.html is used for replacing innerhtml,clientX,Y gives coordinates,There is only one coordinate sentence because it keeps getting overwritten by innerhtml method that is .html())
+
+$(input).focus(function(){
+	$(this).css('background', 'pink');
+});
+
+$(input).blur(function(){
+	$(this).css('background', 'white');
+});
+
+(Now focus means when the input is clicked and blur means when you click outside input so when input is clicked then the input turns pink and when clicked outside it turns white,this means whatever element you are currently in)
+
+
+$('input').keyup(function(e){
+	console.log(e.target.value);
+});
+
+(keyup is also an event when a key is released,e.target.value gives the actual value written)
+
+
+$('select#gender').change(function(){
+	alert("changed");
+});
+
+(change event works when option is changed in options of gender id)
+
+
+$(#form).submit(function(e){
+	e.preventDefault();
+	console.log('submitted');
+});
+
+(form is the id of the submit button .preventDefaul() is used because the sumbitted does not show on console so we need to write it)
+
+$(#form).submit(function(e){
+	e.preventDefault();
+	let name = $('input#name').val;
+	console.log(name);
+});
+
+(So in this way we can take the whole name at once)
+
+DOM MANIPULATION:
+$('p.para1').css({color:'red', background:'white'});
+
+(. is for class,This is the way if you want to change more than two attributes)
+
+$('p.para2').addClass('myClass');
+
+(This will add this class to the p tag of para2 class)
+
+$('p.para2').removeClass('myClass');
+
+(This will remove that class)
+
+$('#btn1').click(function(){
+	$('p.para2').toggleClass('myClass');
+});
+
+(toggleClass adds the class and then removes it on second click in this case)
+
+$('#myDiv').text('hello world');
+
+(.text adds the hello world)
+
+$('#myDiv').html('<h3>hello world'</h3>);
+
+(This is the way to add html)
+
+alert($('#myDiv').text());		(This text will give us the text present there)
+
+$('ul').append('<li>Append list item</li>');		(This appends this to be the last child)
+
+$('ul').prepend('<li>Prepend list item</li>');		(This prepends this to be the first child)
+
+$('.para1').appendTo('.para2');		(para1 will be appended to para2)
+
+$('.para1').prependTo('.para2');		(para1 will be prepended to para2)
+
+$('ul').before('<h4>Hello</h4>');		(This will be added before to the ul tag)
+
+$('ul').after('<h4>World</h4>');		(This will be added after to the ul tag)
+
+Difference between append,prepend and before,after is that append,prepend allows you to change inside the element but before,after allows you to change outside the element 
+
+$('ul').empty();		(It empties the tag and there is nothing inside it)
+
+$('ul').detach();		(It erases the ul tag from the DOM)
+
+$('a').attr('target', '_blank');		(This method adds an attribute,first parameter takes in propert and second takes its value)
+
+alert($('a').attr('href'));		(Using attr you can also find the attr)
+
+$('a').removeAttr('target');		(This removes the attribute)
+
+$('p').wrap('<h1>');		(This wraps each p inside a different h1 tag)
+
+$('p').wrapAll('<h1>');		(This wraps all of the p tags inside only one h1 tag)
+
+$("#newItem").keyup(function(e){
+	let code = e.which;
+	if (code == 13){
+		e.preventDefault();
+		$('ul').append('<li> + e.target.value + '</li>');
+	}
+});		(newItem is the id of the input and which gets the code of the key and 13 is the code of the enter so this works when you press enter then this works)
+
+$.each(myArr, function(i, val){
+	console.log(val);
+})
+
+(.each is used to do iteration on an array)
+
+let newArr = $('ul#list li').toArray();
+$.each(newArr, function(i, val){
+	console.log(val.innerHTML);
+});
+
+(toArray method is used to convert to an array and then through innerHTML we get each text inside each li element)
+
+EFFECTS AND MANIPULATION:
+
+$('#btnfadeout').click(function(){
+	$('#box').fadeOut();
+});		(It fades normally)
+
+$('#btnfadeout').click(function(){
+	$('#box').fadeOut('slow');
+});		(It fades slowly)
+
+$('#btnfadeout').click(function(){
+	$('#box').fadeOut('fast');
+});		(It fades fast)
+
+$('#btnfadeout').click(function(){
+	$('#box').fadeOut(3000);
+});		(It fades in 3 seconds that is it also takes milliseconds in parameters)
+
+$('#btnfadeout').click(function(){
+	$('#box').fadeOut(3000, function({
+		$('#btnfaddout').text('Its gone')
+	}));
+});			(second parameter of fadein which is a function is optional)
+
+$('#btnfadein').click(function(){
+	$('#box').fadeIn(3000);
+});		(It fades in 3000 milliseconds that is 3 seconds)
+
+$('#btnfadein').click(function(){
+	$('#box').fadeToggle(1000);
+});		(It fades in 1000 milliseconds that is 1 second and on second click it comes back)
+
+Just like in fadein we can also use the second parameter of function in fadeout and in toggle function
+
+$('#btnSlideUp').click(function(){
+	$('#box').slideUp(3000);
+});		(It slides up in 3000 milliseconds that is 3 seconds)
+
+$('#btnSlideDown').click(function(){
+	$('#box').slideDown(3000);
+});		(It slides down in 3000 milliseconds that is 3 seconds)
+
+$('#btnSlideToggle').click(function(){
+	$('#box').slideToggle(3000);
+});		(It toggles slide up in 3000 milliseconds that is 3 seconds and on second click it slides down in 3 seconds)
+
+$('#btnStop').click(function(){
+	$('#box').stop();
+});		(This stops in the middle of an effect)
+
+The parameters of SlideUp,SlideDown,SlideToggle can also be changed	
+
+You have to set the position of the box you want to move to relative then these stuff:
+$('#moveRight').click(function(){
+	$('#box'2).animate({
+		left:500,
+		height:'300px',
+		width:'300px',
+		opacity:'0.5'
+	});
+});
+
+$('#moveLeft').click(function(){
+	$('#box'2).animate({
+		left:0,
+		height:100px,
+		width:100px,
+		opacity:1
+	});
+});
+
+Obviosly in start the moveLeft etc are ids of buttons.
+
+$('#moveAround').click(function(){
+	let box = $('#box2');
+	box.animate({
+		left:300
+	});
+	box.animate({
+		top:300
+	});
+	box.animate({
+		left:0,
+		top:300
+	});
+	box.animate({
+		left:0
+		top:0
+	});
+
+});		(This makes the box move around in a rectangle or square whatever that is)
+
+AJAX:
+You need to first install Nodejs from nodejs.org (You can run javascript on server environment) and you also need to install an npm module called live server from https://www.npmjs.com/package/live-server,npm is node packaged module so basically when you intall node you also get npm and you can istall modules and you can also install this one,its a server and its very vey simple its a dev server,you run a command on a command line and it will open your file as I open it inside of a sever,we are doing this because we get issues
+
+Traversy media has used command propmpt but on linux obviously terminal should be used,some commands may not run or may not be proper:
+
+node -v 		(This tells us the version of nodejs)
+
+npm -v 			(This tells us the version of npm)
+
+npm install live-server -g
+
+You can also use zamp or xamp or one of those where you can have an apach server,you can also use that,you just need to have some kind of server environment
+
+live-server --port=8000		(This command should be run in the directory where your html is,also if your port 8080 is taken then you should use this port number)
+
+AJAX stands for Asynchronous Javascript and XML
+
+It makes requests behind the scenes so you don't have to refresh the page,you can just update certain parts of your application
+
+With Ajax,web applications can send and retrieve data from a server asynchronously without interfering with the display and behaviour of the existing page,its not a programming language
+
+You can use this to get other HTML pages you can fetch Json so you can work with API'S and you can get data and load it
+
+For example there is another html file and in it there is an h1 and you want to bring it in your main html file,a bunch of methods can be used but the easiest is load but you also have some limitations
+
+In script tags or another file write
+
+$('#result').load('test.html');		(result is an id of an empty div here and not and test.html is the html file where we have our heading using ajax)
+
+$('#result').load('test.html', function(responseTxt, statusTxt, xhr){
+	if(statusTxt == "success"){
+		alert('It went fine');
+	}
+	else if(statusTxt == "error"){
+		alert("Error: " + xhr.statusText);
+	}
+});		(The function takes in three parameters,xhr.statusText will five us Not  Found or any other thing if wrong file or not found)
+
+$.get('test.html', function(data){
+	$('#result'.html(data));
+});		(We can also use get)
+
+Json is JavaScript Object Notation,its a syntax for storing and exchanging information
+
+Json is text,written with JavaScript object notation e.g,
+
+'{"name":"John", "age":31, "city":"New York"}'
+
+$.getJSON('users.json', function(data){
+	$.each(data, function(i, user){
+		$('ul#users').append('<li>' + user.firstName + '<li>')
+	})		
+});			(In this way we ge json file and use it for our own purpose)
+
+$.ajax({
+	method: 'GET',
+	url: 'https://jsonplaceholder.typidcode.com/posts',
+	datatype: 'json'
+}).done(function(data){
+	console.log(data);
+	$.map(data, function(post, i){
+		$('#result').append('<h3>' + post.title + '</h3><p>' + post.body + '</p>');
+	});
+});		(If you don't want to write method then by default 'GET' is default,datatype in this case is json,check the url if you may not understand,can be changed obviosusly)
+
+$('#postForm').submit(function(e){
+	e.preventDefault();
+
+	let title = $(#titleform).val();
+	let body = $(#bodyform).val();
+	let url = $(this).attr('action');
+
+	$.post(url, {title:title, body:body}).done({
+		console.log('Post saved');
+		console.log(data);
+	});
+});		(This is how you can post request in jquery using ajax)
